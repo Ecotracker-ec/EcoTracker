@@ -42,5 +42,5 @@ function calculateCarbonFootprint() {
   // Calculate total carbon footprint
   const carbonFootprint = electricityEmission + gasEmission + airTravelEmission + trainTravelEmission + wasteEmission + mealEmission;
 
-  document.getElementById("totalFootprint").innerHTML = `Your total carbon footprint is: ${totalFootprint.toFixed(2)} kg CO2`;
+  document.getElementById("carbonFootprint").innerHTML = `Your total carbon footprint is: ${carbonFootprint.toFixed(2)} kg CO2`;
 }
