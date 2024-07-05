@@ -40,7 +40,7 @@ function calculateCarbonFootprint() {
   let mealEmission = vegetarianMeals * 1.75 + nonVegetarianMeals * 3.5;
 
   // Calculate total carbon footprint
-  const totalFootprint = electricityEmission + gasEmission + airTravelEmission + trainTravelEmission + wasteEmission + mealEmission;
+  const carbonFootprint = electricityEmission + gasEmission + airTravelEmission + trainTravelEmission + wasteEmission + mealEmission;
 
   document.getElementById("totalFootprint").innerHTML = `Your total carbon footprint is: ${totalFootprint.toFixed(2)} kg CO2`;
 }
