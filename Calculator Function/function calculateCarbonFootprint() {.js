@@ -1,39 +1,30 @@
-function calculateCarbonFootprint() {
+function calculateCarbonFootprint(inputs) {
+  const { electricity, gas, gasusage, wood, priv, waste, meal, meals } = inputs;
 
-  const electricityKWh = parseFloat(document.getElementById("electricity-usage").value); // in kWh
-  const gasCylinders = parseInt(document.getElementById("gasCylinders").value);  // number of cylinders
-  const hasPipedGas = document.getElementById("pipedGas").checked;
-  const pipedGasCubicMeters = parseFloat(document.getElementById("pipedGasCubicMeters").value); // in cubic meters
-  const privateVehicleDistance = parseFloat(document.getElementById("private").value);
-  const wasteKg = parseFloat(document.getElementById("wasteKg").value);
-  const vegetarianMeals = parseInt(document.getElementById("vegetarianMeals").value);
-  const nonVegetarianMeals = parseInt(document.getElementById("nonVegetarianMeals").value);
+  let electricityEmission = electricity * 0.82;
 
-  // Calculate carbon footprint
-  let carbonFootprint = 0;
+  let gasEmission = 0;
+  if (gas === "gas-pipeline") {
+    gasEmission = gasusage * 22.73;
+  } else if (gas === "gas-cylinder") {
+    gasEmission = gasusage * 100;
+  }
+  
+  let woodEmission = wood * 1.6 * 4;
 
-  // Electricity usage
-  let electricityEmission = electricity-usage * 0.82;
+  let travelEmission = priv / 36.6;
+  
+  let wasteEmission = waste * 1.49 * 4;
 
-  // Gas usage
-  let gasEmission;
-  if (hasPipedGas) {
-    gasEmission = pipedGasCubicMeters * 22.73; 
-  } else {
-    gasEmission = gasCylinders * 100;  
+  let mealEmission = 0;
+  if (meal === "vegetarian") {
+    mealEmission = meals * 1.75 * 30;
+  } else if (meal === "non-vegetarian") {
+    mealEmission = meals * 3.5 * 30;
   }
 
-  // Travel 
-  let travelEmission = privateVehicleDistance/36.6;
+  // Total carbon footprint
+  const totalFootprint = electricityEmission + gasEmission + woodEmission + travelEmission + wasteEmission + mealEmission;
 
-  // Waste Generated
-  let wasteEmission = wasteKg * 1.49; 
-
-  // Meals Carbon Emmission
-  let mealEmission = vegetarianMeals * 1.75 + nonVegetarianMeals * 3.5;
-
-  // Calculate total carbon footprint
-  const totalFootprint = electricityEmission + gasEmission + travelEmission + wasteEmission + mealEmission;
-
-  document.getElementById("totalFootprint").innerHTML = `Your total carbon footprint is: ${totalFootprint.toFixed(2)} kg CO2`;
+  return totalFootprint;
 }
