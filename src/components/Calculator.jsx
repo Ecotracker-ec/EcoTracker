@@ -110,7 +110,7 @@ const Calculator = () => {
               </select>
             </label>
             <label className='flex flex-col'>
-              <span className='text-white font-medium mb-4'>Number of nits used per month</span>
+              <span className='text-white font-medium mb-4'>Number of Units used per month</span>
               <input
                 type='number'
                 name='gasusage'
