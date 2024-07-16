@@ -113,8 +113,8 @@ const Calculator = () => {
               <span className='text-white font-medium mb-4'>Number of nits used per month</span>
               <input
                 type='number'
-                name='gas'
-                value={form.gas}
+                name='gasusage'
+                value={form.gasusage}
                 onChange={handleChange}
                 placeholder=""
                 min={0}
