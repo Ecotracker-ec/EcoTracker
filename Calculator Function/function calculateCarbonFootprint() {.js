@@ -4,11 +4,7 @@ function calculateCarbonFootprint() {
   const gasCylinders = parseInt(document.getElementById("gasCylinders").value);  // number of cylinders
   const hasPipedGas = document.getElementById("pipedGas").checked;
   const pipedGasCubicMeters = parseFloat(document.getElementById("pipedGasCubicMeters").value); // in cubic meters
-  const domesticFlights = parseInt(document.getElementById("domesticFlights").value);
-  const internationalFlights = parseInt(document.getElementById("internationalFlights").value);
-  const localTrainTrips = parseInt(document.getElementById("localTrainTrips").value);
-  const mediumTrainTrips = parseInt(document.getElementById("mediumTrainTrips").value);
-  const longTrainTrips = parseInt(document.getElementById("longTrainTrips").value);
+  const privateVehicleDistance = parseFloat(document.getElementById("private").value);
   const wasteKg = parseFloat(document.getElementById("wasteKg").value);
   const vegetarianMeals = parseInt(document.getElementById("vegetarianMeals").value);
   const nonVegetarianMeals = parseInt(document.getElementById("nonVegetarianMeals").value);
@@ -27,11 +23,8 @@ function calculateCarbonFootprint() {
     gasEmission = gasCylinders * 100;  
   }
 
-  // Air travel
-  let airTravelEmission = domesticFlights * 348.5 + internationalFlights * 532.7;
-
-  // Train Travel
-  let trainTravelEmission = localTrainTrips * 1.5 + mediumTrainTrips * 18.3 + longTrainTrips * 41.5;
+  // Travel 
+  let travelEmission = privateVehicleDistance/36.6;
 
   // Waste Generated
   let wasteEmission = wasteKg * 1.49; 
@@ -40,7 +33,7 @@ function calculateCarbonFootprint() {
   let mealEmission = vegetarianMeals * 1.75 + nonVegetarianMeals * 3.5;
 
   // Calculate total carbon footprint
-  const totalFootprint = electricityEmission + gasEmission + airTravelEmission + trainTravelEmission + wasteEmission + mealEmission;
+  const totalFootprint = electricityEmission + gasEmission + travelEmission + wasteEmission + mealEmission;
 
   document.getElementById("totalFootprint").innerHTML = `Your total carbon footprint is: ${totalFootprint.toFixed(2)} kg CO2`;
 }
