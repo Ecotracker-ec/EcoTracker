@@ -18,7 +18,6 @@ const Calculator = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  const [travel, setTravel] = useState(['Air Travel','Bus','Train','Private Vehicle'])
 
   const handleChange = (e) => {
     const { target } = e;
@@ -123,17 +122,15 @@ const Calculator = () => {
               />
             </label>
             <label className='flex flex-col'>
-              <span className='text-white font-medium mb-4'>🚚Transport (one or more)</span>
-              <Multiselect 
-                isObject={false}
-                onRemove={(event) => {
-                  console.log(event)
-                }}
-                onSelect={(event) => {
-                  console.log(event)
-                }}
-                options={travel}
-                className="bg-tertiary text-black"
+              <span className='text-white font-medium mb-4'>🚚Private vehicle usage in km</span>
+              <input
+                type='number'
+                name='priv'
+                value={form.priv}
+                onChange={handleChange}
+                placeholder=""
+                min={0}
+                className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
 
             </label>
