@@ -30,6 +30,8 @@ exports.createEmission = async (req, res) => {
             waste,
             meal,
             meals,
+            renewable, 
+            renewunit,
             totalFootprint,
             user: email
         });
