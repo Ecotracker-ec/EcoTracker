@@ -1,5 +1,5 @@
 function calculateCarbonFootprint(inputs) {
-  const { electricity, gas, gasusage, wood, priv, waste, meal, meals } = inputs;
+  const { electricity, gas, gasusage, wood, priv, waste, meal, meals } = req.body;
 
   let electricityEmission = electricity * 0.82;
 
