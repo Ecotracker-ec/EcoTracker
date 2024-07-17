@@ -184,6 +184,18 @@ const Calculator = () => {
                   <option value="yes">Yes</option>
               </select>
             </label>
+             <label className='flex flex-col'>
+              <span className='text-white font-medium mb-4'>Number of Units produced per month</span>
+              <input
+                type='number'
+                name='renewunit'
+                value={form.renewunit}
+                onChange={handleChange}
+                placeholder=""
+                min={0}
+                className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+              />
+            </label>
 
             <button
               type='submit'
