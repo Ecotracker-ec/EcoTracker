@@ -2,7 +2,7 @@ const Emission = require('../models/EmissionModel');
 
 exports.createEmission = async (req, res) => {
     try {
-        const { month, year, area, electricity, gas, gasusage, wood, priv, waste, meal, meals, renewable } = req.body;
+        const { month, year, area, electricity, gas, gasusage, wood, priv, waste, meal, meals, renewable, renewunit } = req.body;
         const email = req.body.email;
 
         const checkEmission = await Emission.findOne({
@@ -58,9 +58,13 @@ exports.getEmission = async (req, res) => {
 };
 
 function calculateCarbonFootprint(inputs) {
-    const { electricity, gas, gasusage, wood, priv, waste, meal, meals } = inputs;
+    const { electricity, gas, gasusage, wood, priv, waste, meal, meals, renewable, renewunit } = inputs;
 
-    let electricityEmission = electricity * 0.82;
+    let adjustedElectricity = electricity;
+    if (renewable === "yes") {
+        adjustedElectricity -= renewunit;
+    }
+    const electricityEmission = adjustedElectricity * 0.82;
 
     let gasEmission = 0;
     if (gas === "gas-pipeline") {
@@ -69,11 +73,11 @@ function calculateCarbonFootprint(inputs) {
         gasEmission = gasusage * 100;
     }
 
-    let woodEmission = wood * 1.6 * 4;
+    const woodEmission = wood * 1.6 * 4;
 
-    let travelEmission = priv / 36.6;
+    const travelEmission = priv / 36.6;
 
-    let wasteEmission = waste * 1.49 * 4;
+    const wasteEmission = waste * 1.49 * 4;
 
     let mealEmission = 0;
     if (meal === "vegetarian") {
