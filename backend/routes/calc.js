@@ -1,6 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const controller = require('../controllers/EmissionController')
+import { Router } from 'express';
+const router = Router();
+import { createEmission, getEmission, getALlEmissions } from '../controllers/emissioncontroller.js';
 
-router.post('/', controller.createEmission)
+router.post('/', createEmission)
+router.get('/', getEmission)
 //router.get('/')
+export default router
