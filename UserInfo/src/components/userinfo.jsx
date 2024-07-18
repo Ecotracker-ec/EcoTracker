@@ -310,7 +310,7 @@ const Userinfo = () => {
                   </>
                 )}
                 {State === "HIMACHALPRADESH" && (
-                  <><option value="Bilaspur">Bilaspur</option>
+                  <><option value="BilaspurHP">Bilaspur</option>
                     <option value="Chamba">Chamba</option>
                     <option value="Hamirpur">Hamirpur</option>
                     <option value="Kangra">Kangra</option>
@@ -383,7 +383,7 @@ const Userinfo = () => {
                     <option value="Belgaum">Belgaum</option>
                     <option value="Bellary">Bellary</option>
                     <option value="Bidar">Bidar</option>
-                    <option value="Bijapur">Bijapur</option>
+                    <option value="BijapurKA">Bijapur</option>
                     <option value="Chamarajanagar">Chamarajanagar</option>
                     <option value="Chikkaballapura">Chikkaballapura</option>
                     <option value="Chikmagalur">Chikmagalur</option>
@@ -488,7 +488,7 @@ const Userinfo = () => {
                   <><option value="Ahmadnagar">Ahmadnagar</option>
                     <option value="Akola">Akola</option>
                     <option value="Amravati">Amravati</option>
-                    <option value="Aurangabad">Aurangabad</option>
+                    <option value="AurangabadMH">Aurangabad</option>
                     <option value="Bhandara">Bhandara</option>
                     <option value="Bid">Bid</option>
                     <option value="Buldana">Buldana</option>
@@ -511,7 +511,7 @@ const Userinfo = () => {
                     <option value="Palghar">Palghar</option>
                     <option value="Parbhani">Parbhani</option>
                     <option value="Pune">Pune</option>
-                    <option value="Raigarh">Raigarh</option>
+                    <option value="RaigarhMH">Raigarh</option>
                     <option value="Ratnagiri">Ratnagiri</option>
                     <option value="Sangli">Sangli</option>
                     <option value="Satara">Satara</option>
@@ -785,7 +785,7 @@ const Userinfo = () => {
                     <option value="Baghpat">Baghpat</option>
                     <option value="Bahraich">Bahraich</option>
                     <option value="Ballia">Ballia</option>
-                    <option value="Balrampur">Balrampur</option>
+                    <option value="BalrampurUP">Balrampur</option>
                     <option value="Banda">Banda</option>
                     <option value="BaraBanki">Bara Banki</option>
                     <option value="Bareilly">Bareilly</option>
@@ -808,7 +808,7 @@ const Userinfo = () => {
                     <option value="Ghazipur">Ghazipur</option>
                     <option value="Gonda">Gonda</option>
                     <option value="Gorakhpur">Gorakhpur</option>
-                    <option value="Hamirpur">Hamirpur</option>
+                    <option value="HamirpurUP">Hamirpur</option>
                     <option value="Hapur">Hapur</option>
                     <option value="Hardoi">Hardoi</option>
                     <option value="Hathras">Hathras</option>
@@ -834,7 +834,7 @@ const Userinfo = () => {
                     <option value="Moradabad">Moradabad</option>
                     <option value="Muzaffarnagar">Muzaffarnagar</option>
                     <option value="Pilibhit">Pilibhit</option>
-                    <option value="Pratapgarh">Pratapgarh</option>
+                    <option value="PratapgarhUP">Pratapgarh</option>
                     <option value="RaeBareli">RaeBareli</option>
                     <option value="Rampur">Rampur</option>
                     <option value="Saharanpur">Saharanpur</option>
