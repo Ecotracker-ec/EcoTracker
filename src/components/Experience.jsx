@@ -48,14 +48,14 @@ const Experience = () => {
         <Navbar />
       </div>
       <div className='bg-primary flex justify-center items-center pb-10'>
-        <div className='mt-40'>
+        <div className=' mt-20 md:mt-40'>
           <motion.div variants={textVariant()}>
-            <h2 className={`${styles.sectionHeadText} text-center`}>
-              FAQ
-            </h2>
+            <h1 className={`${styles.sectionHeadText} text-center`}>
+              FAQs
+            </h1>
           </motion.div>
 
-          <div className='mt-20 flex flex-col'>
+          <div className='mt-5 md:mt-20 flex flex-col'>
             <VerticalTimeline>
               {experiences.map((experience, index) => (
                 <ExperienceCard

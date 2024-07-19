@@ -50,7 +50,7 @@ const Works = () => {
   return (
     <div className="relative z-0 bg-primary">
       <Navbar/>
-      <div className='mt-20 ml-40'>
+      <div className='mt-20 ml-10 mr-10 md:ml-40'>
         <motion.div variants={textVariant()}>
           <h2 className={`${styles.sectionHeadText}`}>Rewards</h2>
           <p className={`${styles.sectionSubText} `}>Spend Wisely</p>
