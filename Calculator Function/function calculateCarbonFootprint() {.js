@@ -1,46 +1,34 @@
-function calculateCarbonFootprint() {
+function calculateCarbonFootprint(inputs) {
+    const { electricity, gas, gasusage, wood, priv, waste, meal, meals, renewable, renewunit } = inputs;
 
-  const electricityKWh = parseFloat(document.getElementById("electricity-usage").value); // in kWh
-  const gasCylinders = parseInt(document.getElementById("gasCylinders").value);  // number of cylinders
-  const hasPipedGas = document.getElementById("pipedGas").checked;
-  const pipedGasCubicMeters = parseFloat(document.getElementById("pipedGasCubicMeters").value); // in cubic meters
-  const domesticFlights = parseInt(document.getElementById("domesticFlights").value);
-  const internationalFlights = parseInt(document.getElementById("internationalFlights").value);
-  const localTrainTrips = parseInt(document.getElementById("localTrainTrips").value);
-  const mediumTrainTrips = parseInt(document.getElementById("mediumTrainTrips").value);
-  const longTrainTrips = parseInt(document.getElementById("longTrainTrips").value);
-  const wasteKg = parseFloat(document.getElementById("wasteKg").value);
-  const vegetarianMeals = parseInt(document.getElementById("vegetarianMeals").value);
-  const nonVegetarianMeals = parseInt(document.getElementById("nonVegetarianMeals").value);
+    let adjustedElectricity = electricity;
+    if (renewable === "yes") {
+        adjustedElectricity -= renewunit;
+    }
+    const electricityEmission = adjustedElectricity * 0.82;
 
-  // Calculate carbon footprint
-  let carbonFootprint = 0;
+    let gasEmission = 0;
+    if (gas === "gas-pipeline") {
+        gasEmission = gasusage * 22.73;
+    } else if (gas === "gas-cylinder") {
+        gasEmission = gasusage * 100;
+    }
 
-  // Electricity usage
-  let electricityEmission = electricity-usage * 0.82;
+    const woodEmission = wood * 1.6 * 4;
 
-  // Gas usage
-  let gasEmission;
-  if (hasPipedGas) {
-    gasEmission = pipedGasCubicMeters * 22.73; 
-  } else {
-    gasEmission = gasCylinders * 100;  
-  }
+    const travelEmission = priv / 36.6;
 
-  // Air travel
-  let airTravelEmission = domesticFlights * 348.5 + internationalFlights * 532.7;
+    const wasteEmission = waste * 1.49 * 4;
 
-  // Train Travel
-  let trainTravelEmission = localTrainTrips * 1.5 + mediumTrainTrips * 18.3 + longTrainTrips * 41.5;
+    let mealEmission = 0;
+    if (meal === "vegetarian") {
+        mealEmission = meals * 1.75 * 30;
+    } else if (meal === "non-vegetarian") {
+        mealEmission = meals * 3.5 * 30;
+    }
 
-  // Waste Generated
-  let wasteEmission = wasteKg * 1.49; 
+    // Total carbon footprint
+    const totalFootprint = electricityEmission + gasEmission + woodEmission + travelEmission + wasteEmission + mealEmission;
 
-  // Meals Carbon Emmission
-  let mealEmission = vegetarianMeals * 1.75 + nonVegetarianMeals * 3.5;
-
-  // Calculate total carbon footprint
-  const totalFootprint = electricityEmission + gasEmission + airTravelEmission + trainTravelEmission + wasteEmission + mealEmission;
-
-  document.getElementById("totalFootprint").innerHTML = `Your total carbon footprint is: ${totalFootprint.toFixed(2)} kg CO2`;
+    return totalFootprint;
 }
