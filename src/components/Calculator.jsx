@@ -38,7 +38,7 @@ const Calculator = () => {
       <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
         <Navbar />
       </div>
-      <div className='bg-primary flex justify-center items-center pb-10'>
+      <div className='bg-primary pb-10'>
         <div className='mt-40'>
           <div
           className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
@@ -199,7 +199,7 @@ const Calculator = () => {
 
             <button
               type='submit'
-              className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+              className='bg-red-500 hover:bg-red-700 py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
             >
               {loading ? "Submiting..." : "Submit"}
             </button>
