@@ -33,7 +33,6 @@ const Userinfo = () => {
             <h2>Welcome !</h2>
             <p>Fill this to get us to know you better</p>
             <form>
-              <input type="text" name="fullname" placeholder="Enter your full name" required />
               <input type="number" name="members" placeholder="Number of members at house" required />
               <select className="state" onChange={handleStateChange} value={State} required>
                 <option value="">Select Region</option>
