@@ -1,75 +1,17 @@
-import React from "react";
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import { motion } from "framer-motion";
+import React from 'react'
 
-import "react-vertical-timeline-component/style.min.css";
-
-import { styles } from "../styles";
-import { experiences } from "../constants";
-import { SectionWrapper } from "../hoc";
-import { textVariant } from "../utils/motion";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
-
-const ExperienceCard = ({ experience }) => {
+function Footer() {
   return (
-    <VerticalTimelineElement
-      contentStyle={{
-        background: "#1d1836",
-        color: "#fff",
-      }}
-      contentArrowStyle={{ borderRight: "7px solid  #232631" }}
-    >
-      <div>
-        <h3 className='text-white text-[24px] font-bold'>{experience.title}</h3>
-      </div>
-
-      <ul className='mt-5 list-disc ml-5 space-y-2'>
-        {experience.points.map((point, index) => (
-          <li
-            key={`experience-point-${index}`}
-            className='text-white-100 text-[14px] pl-1 tracking-wider'
-          >
-            {point}
-          </li>
-        ))}
-      </ul>
-    </VerticalTimelineElement>
-  );
-};
-
-const Experience = () => {
-  return (
-    <>
-      <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
-        <Navbar />
-      </div>
-      <div className='bg-primary flex justify-center items-center pb-10'>
-        <div className=' mt-20 md:mt-40'>
-          <motion.div variants={textVariant()}>
-            <h1 className={`${styles.sectionHeadText} text-center`}>
-              FAQs
-            </h1>
-          </motion.div>
-
-          <div className='mt-5 md:mt-20 flex flex-col'>
-            <VerticalTimeline>
-              {experiences.map((experience, index) => (
-                <ExperienceCard
-                  key={`experience-${index}`}
-                  experience={experience}
-                />
-              ))}
-            </VerticalTimeline>
-          </div>
+    <div className="relative w-full bg-black ">
+        <div className='grid grid-cols-2 gap-4'>
+            <div className='text-[25px] md:text-[45px] mt-14 ml-5 md:ml-20 '>EcoTracker</div>
+            <div className='text-[18px] text-left mt-14 md:text-[30px]'>Every step counts towards a greener future.</div>
         </div>
+        <div className=' mt-10 md:mt-20 ml-5 md:ml-20 text-[15px] md:text-[25px]'>
+          <b>CONTACT US</b> <br />ecotracker.ec@gmail.com <br />ABV-IIITM, <br />Gwalior-475014
+        </div><br /><br /><br />
       </div>
-      <Footer/>
-    </>
-  );
-};
+  )
+}
 
-export default Experience
+export default Footer
