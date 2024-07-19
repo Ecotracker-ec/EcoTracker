@@ -55,7 +55,7 @@ const Calculator = () => {
           >
             <label className='flex flex-col'>
               <span className='text-white font-medium mb-4'>Select Month</span>
-              <select name="month" id="months" className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
+              <select name="month" id="months" className='bg-tertiary py-4 px-6 placeholder:text-secondary w[-800] text-white rounded-lg outline-none border-none font-medium'>
                   <option value="january">January</option>
                   <option value="february">February</option>
                   <option value="march">March</option>
