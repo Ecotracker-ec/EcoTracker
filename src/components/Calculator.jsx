@@ -53,7 +53,7 @@ const Calculator = () => {
             onSubmit={handleSubmit}
             className='mt-12 flex flex-col gap-8'
           >
-            <label className='flex flex-col'>
+            <label className='flex flex-col self-stretch'>
               <span className='text-white font-medium mb-4'>Select Month</span>
               <select name="month" id="months" className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
                   <option value="january">January</option>
@@ -70,7 +70,7 @@ const Calculator = () => {
                   <option value="december">December</option>
               </select>
             </label>
-            <label className='flex flex-col'>
+            <label className='flex flex-col self-stretch'>
               <span className='text-white font-medium mb-4'>Select Year</span>
               <select name="year" id="year" className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
                   <option value="2020">2020</option>
@@ -82,14 +82,14 @@ const Calculator = () => {
                   <option value="2026">2026</option>
               </select>
             </label>
-            <label className='flex flex-col'>
+            <label className='flex flex-col self-stretch'>
               <span className='text-white font-medium mb-4'>Select Region</span>
               <select name="area" id="area" className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
                   <option value="urban">Urban</option>
                   <option value="rural">Rural</option>
               </select>
             </label>
-            <label className='flex flex-col'>
+            <label className='flex flex-col self-stretch'>
               <span className='text-white font-medium mb-4'>⚡Electricity used per month(KWh)</span>
               <input
                 type='number'
@@ -101,7 +101,7 @@ const Calculator = () => {
                 className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
             </label>
-            <label className='flex flex-col'>
+            <label className='flex flex-col self-stretch'>
               <span className='text-white font-medium mb-4'>🧯Type of Gas Connection</span>
               <select name="gas" id="gas" className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
                   <option value="none">None</option>
@@ -109,7 +109,7 @@ const Calculator = () => {
                   <option value="gas-pipeline">Pipeline</option>
               </select>
             </label>
-            <label className='flex flex-col'>
+            <label className='flex flex-col self-stretch'>
               <span className='text-white font-medium mb-4'>Number of Units used per month</span>
               <input
                 type='number'
@@ -121,7 +121,7 @@ const Calculator = () => {
                 className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
             </label>
-            <label className='flex flex-col'>
+            <label className='flex flex-col self-stretch'>
               <span className='text-white font-medium mb-4'>🌳Wood used weekly(kg)</span>
               <input
                 type='number'
@@ -133,7 +133,7 @@ const Calculator = () => {
                 className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
             </label>
-            <label className='flex flex-col'>
+            <label className='flex flex-col self-stretch'>
               <span className='text-white font-medium mb-4'>🚚Private vehicle usage in km</span>
               <input
                 type='number'
@@ -146,7 +146,7 @@ const Calculator = () => {
               />
 
             </label>
-            <label className='flex flex-col'>
+            <label className='flex flex-col self-stretch'>
               <span className='text-white font-medium mb-4'>🗑️Waste Generated(Kg) per week</span>
               <input
                 type='number'
@@ -158,14 +158,14 @@ const Calculator = () => {
                 className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
             </label>
-            <label className='flex flex-col'>
+            <label className='flex flex-col self-stretch'>
               <span className='text-white font-medium mb-4'>🍽️Meal preference</span>
               <select name="meal" id="meal" className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
                   <option value="vegeterian">Vegeterian</option>
                   <option value="non-vegeterian">Non-Vegeterian</option>
               </select>
             </label>
-            <label className='flex flex-col'>
+            <label className='flex flex-col self-stretch'>
               <span className='text-white font-medium mb-4'>Number of Meals per Day</span>
               <input
                 type='number'
@@ -177,14 +177,14 @@ const Calculator = () => {
                 className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
             </label>
-            <label className='flex flex-col'>
+            <label className='flex flex-col self-stretch'>
               <span className='text-white font-medium mb-4'>♻️Any type of renewable energy generated</span>
               <select name="renewable" id="renewable" className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
                   <option value="no">No</option>
                   <option value="yes">Yes</option>
               </select>
             </label>
-             <label className='flex flex-col'>
+             <label className='flex flex-col self-stretch'>
               <span className='text-white font-medium mb-4'>Number of Units produced per month</span>
               <input
                 type='number'

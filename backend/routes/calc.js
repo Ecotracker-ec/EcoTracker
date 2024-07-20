@@ -1,8 +1,9 @@
 import { Router } from 'express';
 const router = Router();
-import { createEmission, getEmission, getALlEmissions } from '../controllers/emissioncontroller.js';
+import { createEmission, getEmission, getALlEmissions } from '../controllers/EmissionController.js';
+import {authenticateUser} from '../controllers/usercontroller.js'
 
-router.post('/', createEmission)
-router.get('/', getEmission)
+router.post('/', authenticateUser, createEmission)
+router.get('/', authenticateUser, getEmission)
 //router.get('/')
 export default router

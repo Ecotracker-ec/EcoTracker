@@ -34,7 +34,13 @@ import {
       title:'Reward'
     }
   ];
-  
+  export const navLinksh = [
+    
+    {
+      id: "login",
+      title: "Login",
+    }
+  ];
   const services = [
     {
       title: "Climate Change",

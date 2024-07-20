@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100;
+
+}
+
+.login-main {
+  display: flex;
+}
+
+.login-left {
+  flex-grow: 1;
+  height: 200vh;
+  background-color: #0d0c0c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-left img {
+  height: 50vh;
+  width: 400px;
+}
+
+.login-right {
+
+  height: 200vh;
+  flex-grow: 2;
+  background-color: aliceblue;
+
+}
+
+.login-right-container {
+  height: 100%;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-right form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-logo {
+  align-self: center;
+  padding-top: 70px;
+}
+
+.login-center {
+  margin: auto 0;
+}
+
+.login-logo img {
+  width: 80px;
+}
+
+.login-center h2 {
+  font-size: 3rem;
+}
+
+.login-center {
+  text-align: left;
+}
+
+.small-bullet {
+  font-size: 2rem;
+}
+
+.login-center p {
+  font-size: 1rem;
+}
+
+.login-center-options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.det {
+  padding-left: 2vw;
+}
+
+.link a {
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 2px;
+  color: rgb(8, 0, 255);
+}
+
+.link a:hover {
+  text-decoration: underline;
+}
+
+.logo:hover {
+  transform: rotate(360deg);
+}
+
+.logo {
+  transition: transform 6s linear;
+}

@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div className="relative w-full bg-black ">
+    <div className="relative w-full bg-black text-white">
         <div className='grid grid-cols-2 gap-4'>
             <div className='text-[40px] mt-10 ml-5'>EcoTracker</div>
             <div className='text-center mt-14 text-[25px]'>Every step counts towards a greener future.</div>

@@ -1,18 +1,18 @@
 import React from 'react'
-import { Hero, Navbar, Experience } from '../components'
+import { Hero, NavbarH, Experience } from '../components'
 import { styles } from '../styles'
 import { industry, analysis } from '../assets'
 
-function Home() {
+function Homel() {
   return (
-    <div className='back'>
+    <>
       <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center h-[700px]'>
-        <Navbar />
+        <NavbarH />
         <Hero />
       </div>
       <div className="relative w-full bg-black pb-10">
         <img src={industry} alt='Industry' className='h-[500px] w-full object-bottom object-cover mt-20'/>
-        <div className='text-center text-[50px] mt-20 text-white'>
+        <div className='text-center text-[50px] mt-20'>
           Our easy-to-use carbon footprint <br />calculator helps you understand <br />your carbon emissions
         </div>
         <div className='bg-[#e08616] w-[300px] h-[70px] flex items-center justify-center rounded-[50px] mx-auto mt-10'>
@@ -31,9 +31,9 @@ function Home() {
       <div className=''>
       <Experience/>
       </div>
-    </div>
+    </>
   )
 }
 
-export default Home
+export default Homel
 
