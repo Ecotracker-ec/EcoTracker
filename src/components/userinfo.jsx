@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import Image from "./assets/LogoWithTextHorizontal.svg";
 import Logo from "./assets/logo.svg";
 import "./style/indexuserinfo.css";
@@ -9,7 +10,12 @@ const Userinfo = () => {
   const [State, setState] = useState("");
   const [City, setCity] = useState("");
   const [Member, setMember] = useState("");
+  const navigate = useNavigate(); // Initialize useNavigate
 
+  const handleSubmit = (event) => {
+    event.preventDefault(); 
+    navigate('/homepage');
+  };
   const handleStateChange = (e) => {
     setState(e.target.value);
   };
@@ -18,19 +24,19 @@ const Userinfo = () => {
   };
 
   return (
-    <div className="login-main">
-      <div className="login-left">
+    <div className="userinf-main">
+      <div className="userinf-left">
         <img src={Image} alt="logo" />
       </div>
-      <div className="login-right">
-        <div className="login-right-container">
-          <div className="login-logo">
+      <div className="userinf-right">
+        <div className="userinf-right-container">
+          <div className="userinf-logo">
             <img src={Logo} alt="logo of EcoTracker" className="logo"/>
           </div>
-          <div className="login-center">
+          <div className="userinf-center">
             <h2>Welcome !</h2>
             <p>Fill this to get us to know you better</p>
-            <form>
+            <form onSubmit={handleSubmit}>
               <input type="number" name="members" placeholder="Number of members at house" required />
               <select className="state" onChange={handleStateChange} value={State} required>
                 <option value="">Select Region</option>
@@ -892,7 +898,7 @@ const Userinfo = () => {
                   </>
                 )}
               </select>
-              <div className="login-center-options">
+              <div className="userinf-center-options">
                 <div className="remember-div">
                   <div className="details">
                     <input type="checkbox" id="remember-checkbox" required />
@@ -903,17 +909,17 @@ const Userinfo = () => {
                   <div className="privacy">
                     <input type="checkbox" id="priv-checkbox" required />
                     <label htmlFor="priv-checkbox">
-                      I accept <a href="#" className="link">T&C and Privacy Policy</a>.
+                      I accept <a href="priv" className="link">T&C and Privacy Policy</a>.
                     </label>
                   </div>
                 </div>
               </div>
-              <div className="login-center-buttons">
+              <div className="userinf-center-buttons">
                 <button type="submit">Submit</button>
               </div>
             </form>
           </div>
-          <p className="login-bottom-p">
+          <p className="userinf-bottom-p">
             This form can only be filled once. Please fill it carefully.
           </p>
         </div>

@@ -5,10 +5,19 @@ import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa6";
 import "./style/indexLogin.css";
 import "./style/responsive.css";
+import { useNavigate } from 'react-router-dom';
+
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent default form submission
 
+    // Here you can handle form validation or submission logic
 
+    // Navigate to the Userinfo page
+    navigate('/homepage');
+  };
   return (
     <div className="login-main">
       <div className="login-left">
@@ -20,10 +29,9 @@ const Login = () => {
             <img src={Logo} alt="" />
           </div>
           <div className="login-center">
-            <h2>Welcome back!</h2>
-            <p>Please enter your details</p>
-            <form>
-
+            <h2>Log In</h2>
+            <p><br></br> Welcome back!<br></br>Please enter your details</p>
+            <form onSubmit={handleSubmit}>
               <div className="pass-input-div">
                 <input type="email" placeholder="Email" required />
                 <input type={showPassword ? "text" : "password"} placeholder="Password" required />
@@ -43,7 +51,7 @@ const Login = () => {
           </div>
 
           <p className="login-bottom-p">
-            Don't have an account? <a href="#">Sign Up</a>
+            Don't have an account? <a href="/">Sign Up</a>
           </p>
         </div>
       </div>

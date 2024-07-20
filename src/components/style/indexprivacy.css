@@ -1,18 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
-body {
-  font-family: "Poppins", sans-serif;
-  height: 100;
 
-}
 
-.login-main {
+.privacy-main {
   display: flex;
 }
 
-.login-left {
-  flex-grow: 1;
+.privacy-left {
+  flex-grow: 0;
   height: 200vh;
   background-color: #0d0c0c;
   display: flex;
@@ -20,12 +16,12 @@ body {
   align-items: center;
 }
 
-.login-left img {
+.privacy-left img {
   height: 50vh;
   width: 400px;
 }
 
-.login-right {
+.privacy-right {
 
   height: 200vh;
   flex-grow: 2;
@@ -33,37 +29,38 @@ body {
 
 }
 
-.login-right-container {
-  height: 100%;
+.privacy-right-container {
+  height: 200vh;
   width: 80%;
   margin: auto;
   display: flex;
   flex-direction: column;
+  padding-top:3vh;
 }
 
-.login-right form {
+.privacy-right form {
   display: flex;
   flex-direction: column;
 }
 
-.login-logo {
+.privacy-logo {
   align-self: center;
   padding-top: 70px;
 }
 
-.login-center {
+.privacy-center {
   margin: auto 0;
 }
 
-.login-logo img {
+.privacy-logo img {
   width: 80px;
 }
 
-.login-center h2 {
+.privacy-center h2 {
   font-size: 3rem;
 }
 
-.login-center {
+.privacy-center {
   text-align: left;
 }
 
@@ -71,11 +68,11 @@ body {
   font-size: 2rem;
 }
 
-.login-center p {
+.privacy-center p {
   font-size: 1rem;
 }
 
-.login-center-options {
+.privacy-center-options {
   display: flex;
   justify-content: space-between;
 }
@@ -96,9 +93,9 @@ body {
 }
 
 .logo:hover {
-  transform: rotate(360deg);
+  transform: rotate(720deg);
 }
 
 .logo {
-  transition: transform 6s linear;
+  transition: transform 3s linear;
 }

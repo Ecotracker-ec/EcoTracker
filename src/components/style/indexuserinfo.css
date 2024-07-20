@@ -6,11 +6,11 @@ body {
 
 }
 
-.login-main {
+.userinf-main {
   display: flex;
 }
 
-.login-left {
+.userinf-left {
   flex-grow: 1;
   height: 100vh;
   background-color: #0d0c0c;
@@ -20,11 +20,11 @@ body {
   align-items: center;
 }
 
-.login-left img {
+.userinf-left img {
   width: 400px;
 }
 
-.login-right {
+.userinf-right {
 
   height: 100vh;
 
@@ -33,7 +33,7 @@ body {
 
 }
 
-.login-right-container {
+.userinf-right-container {
   height: 100%;
   width: 80%;
   margin: 0 auto;
@@ -44,33 +44,33 @@ body {
 
 }
 
-.login-right form {
+.userinf-right form {
   display: flex;
   flex-direction: column;
 }
 
-.login-logo {
+.userinf-logo {
   align-self: center;
   padding-top: 70px;
 }
 
-.login-center {
+.userinf-center {
   margin: auto 0;
 }
 
-.login-logo img {
+.userinf-logo img {
   width: 50px;
 }
 
-.login-center h2 {
+.userinf-center h2 {
   font-size: 3rem;
 }
 
-.login-center {
+.userinf-center {
   text-align: center;
 }
 
-.login-center p {
+.userinf-center p {
   font-weight: 400;
   font-size: 1.5rem;
   margin-bottom: 40px;
@@ -132,7 +132,7 @@ form button[type='submit'] {
 }
 
 
-.login-center-options {
+.userinf-center-options {
   display: flex;
   justify-content: space-between;
 }
@@ -173,25 +173,25 @@ form button[type='submit'] {
   text-decoration: underline;
 }
 
-.login-center-buttons {
+.userinf-center-buttons {
   margin-top: 40px;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
 }
 
-.login-center-buttons button:nth-child(1) {
+.userinf-center-buttons button:nth-child(1) {
   background-color: black;
   color: white;
   border: 3px solid black;
 }
 
-.login-center-buttons button:nth-child(1):hover {
+.userinf-center-buttons button:nth-child(1):hover {
   color: #333;
   background-color: white;
 }
 
-.login-center-buttons button:nth-child(2) {
+.userinf-center-buttons button:nth-child(2) {
   background-color: #F0F0F0;
   display: flex;
   justify-content: center;
@@ -199,27 +199,27 @@ form button[type='submit'] {
   column-gap: 10px;
 }
 
-.login-center-buttons button:nth-child(2) img {
+.userinf-center-buttons button:nth-child(2) img {
   width: 30px;
 }
 
-.login-center-buttons button:nth-child(2):hover {
+.userinf-center-buttons button:nth-child(2):hover {
   background-color: #c4c4c457;
 }
 
-.login-bottom-p {
+.userinf-bottom-p {
   text-align: center;
   font-size: 1rem;
   padding-top: 30px;
   padding-bottom: 40px;
 }
 
-.login-bottom-p a {
+.userinf-bottom-p a {
   text-decoration: none;
   font-weight: 600;
 }
 
-.login-bottom-p a:hover {
+.userinf-bottom-p a:hover {
   text-decoration: underline;
 }
 .link a {
@@ -233,10 +233,3 @@ form button[type='submit'] {
   text-decoration: underline;
 }
 
-.logo:hover {
-  transform: rotate(360deg);
-}
-
-.logo {
-  transition: transform 6s linear;
-}

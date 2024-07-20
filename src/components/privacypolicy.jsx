@@ -2,24 +2,19 @@ import React, { useEffect, useState } from "react";
 import Image from "./assets/LogoWithTextHorizontal.svg";
 import Logo from "./assets/logo.svg";
 import "./style/indexprivacy.css";
-import "./style/responsive.css"
-
-
+import "./style/responsive.css";
 
 const Privacy = () => {
 
 
   return (
-    <div className="login-main">
-      {/* <div className="login-left">
-        <img src={Image} alt="logo" />
-      </div> */}
-      <div className="login-right">
-        <div className="login-right-container">
-          <div className="login-logo">
+    <div className="privacy-main">
+      <div className="privacy-right">
+        <div className="privacy-right-container">
+          <div className="privacy-logo">
             <img src={Logo} alt="logo of EcoTracker" className="logo"/>
           </div>
-          <div className="login-center">
+          <div className="privacy-center">
             <h2>Privacy Policy</h2>
             <p>Effective Date: 1 July 2024</p>
 

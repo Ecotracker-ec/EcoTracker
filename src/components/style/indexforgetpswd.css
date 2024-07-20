@@ -7,11 +7,11 @@ body{
 
 }
 
-.login-main{
+.forget-pswd-main{
   display: flex;
 }
 
-.login-left{
+.forget-pswd-left{
   flex-grow: 1;
   height: 100vh;
   background-color: #0d0c0c;
@@ -21,11 +21,11 @@ body{
   align-items: center;
 }
 
-.login-left img{
+.forget-pswd-left img{
   width: 400px;
 }
 
-.login-right{
+.forget-pswd-right{
 
   height: 100vh;
 
@@ -34,7 +34,7 @@ body{
 background-color:aliceblue;
 }
 
-.login-right-container{
+.forget-pswd-right-container{
   height: 100%;
   width: 80%;
   margin: 0 auto;
@@ -45,33 +45,33 @@ background-color:aliceblue;
 
 }
 
-.login-right form{
+.forget-pswd-right form{
   display: flex;
   flex-direction: column;
 }
 
-.login-logo{
+.forget-pswd-logo{
   align-self: center;
   padding-top: 50px;
 }
 
-.login-center{
+.forget-pswd-center{
   margin: auto 0;
 }
 
-.login-logo img{
+.forget-pswd-logo img{
   width: 50px;
 }
 
-.login-center h2{
+.forget-pswd-center h2{
   font-size: 2.5rem;
 }
 
-.login-center{
+.forget-pswd-center{
   text-align: center;
 }
 
-.login-center p{
+.forget-pswd-center p{
   font-weight: 400;
   font-size: 1.5rem;
   margin-bottom: 40px;
@@ -115,7 +115,7 @@ form button[type='submit'] {
 }
 
 
-.login-center-options{
+.forget-pswd-center-options{
   display: flex;
   justify-content: space-between;
 }
@@ -144,25 +144,25 @@ form button[type='submit'] {
   text-decoration: underline;
 }
 
-.login-center-buttons{
+.forget-pswd-center-buttons{
   margin-top: 40px;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
 }
 
-.login-center-buttons button:nth-child(1){
+.forget-pswd-center-buttons button:nth-child(1){
   background-color: black;
   color: white;
   border: 3px solid black;
 }
 
-.login-center-buttons button:nth-child(1):hover{
+.forget-pswd-center-buttons button:nth-child(1):hover{
   color: #333;
   background-color: white;
 }
 
-.login-center-buttons button:nth-child(2){
+.forget-pswd-center-buttons button:nth-child(2){
   background-color: #F0F0F0;
   display: flex;
   justify-content: center;
@@ -170,27 +170,27 @@ form button[type='submit'] {
   column-gap: 10px;
 }
 
-.login-center-buttons button:nth-child(2) img{
+.forget-pswd-center-buttons button:nth-child(2) img{
   width: 30px;
 }
 
-.login-center-buttons button:nth-child(2):hover{
+.forget-pswd-center-buttons button:nth-child(2):hover{
   background-color: #c4c4c457;
 }
 
-.login-bottom-p{
+.forget-pswd-bottom-p{
   text-align: center;
   font-size: 1rem;
   padding-bottom: 40px;
 }
 
-.login-bottom-p a{
+.forget-pswd-bottom-p a{
   text-decoration: none;
   font-weight: 600;
   color: rgb(8, 0, 255);
 }
 
-.login-bottom-p a:hover{
+.forget-pswd-bottom-p a:hover{
   text-decoration: underline;
 }
 
