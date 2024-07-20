@@ -5,7 +5,7 @@ import { industry, analysis } from '../assets'
 
 function Home() {
   return (
-    <>
+    <div className='back'>
       <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center h-[700px]'>
         <Navbar />
         <Hero />
@@ -31,7 +31,7 @@ function Home() {
       <div className=''>
       <Experience/>
       </div>
-    </>
+    </div>
   )
 }
 
