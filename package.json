@@ -29,6 +29,7 @@
     "react-tilt": "^1.0.2",
     "react-vertical-timeline-component": "^3.6.0",
     "recharts": "^2.12.7",
+    "redaxios": "^0.5.1",
     "three": "^0.165.0"
   },
   "devDependencies": {
