@@ -12,7 +12,7 @@ const courier = new CourierClient({ authorizationToken: process.env.COURIER_AUTH
 export function authenticateUser(req, res, next) {
     const token = req.headers.authorization
     if (!token)
-        res.status(401).send('Not Authorized')
+        return res.status(401).send('Not Authorized')
 
     jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
         if (err)
@@ -150,7 +150,7 @@ export async function forgotPassword(req, res) {
     const user = await User.findOne({email})
 
     if (!user)
-        res.status(404).send('Email not registered')
+        return res.status(404).send('Email not registered')
 
     const password = user.password
     const { requestId } = await courier.send({
@@ -167,4 +167,19 @@ export async function forgotPassword(req, res) {
       })
 
     res.status(200).send('Password sent to registered email id')
+}
+
+export async function getUser(req, res) {
+    try {
+        const email = req.user.email
+        const user = await User.findOne({email})
+
+        if (!user)
+            return res.status(404).send('User not found!')
+
+        res.status(200).json(user)
+    }
+    catch (err) {
+        res.status(500).send(`${err}`)
+    }
 }

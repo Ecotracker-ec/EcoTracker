@@ -95,3 +95,15 @@ export async function getALlEmissions(req, res) {
         res.status(500).send("Error finding emissions")
     }
 }
+
+export async function getLast12Emissions(req, res) {
+    try {
+        const email = req.user.email
+        const emissions = await Emission.find({user: email}).sort({createdAt: -1}).limit(12).exec()
+
+        res.status(200).send(emissions)
+    }
+    catch (err) {
+        res.status(500).send(`error: ${err}`)
+    }
+}

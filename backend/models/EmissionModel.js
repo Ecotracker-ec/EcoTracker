@@ -17,7 +17,7 @@ const emissionSchema = new Schema({
     renewunit: {type: Number, required: true},
     totalemission: {type: Number, required: true},
     user: {type: String, required: true}
-})
+}, {timestamps: {createdAt: 'createdAt'}})
 
 const Emission = model('Emission', emissionSchema)
 export default Emission

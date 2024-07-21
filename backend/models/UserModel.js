@@ -9,7 +9,6 @@ const userSchema = new Schema({
     city: {type: String, default: null},
     state: {type: String, default: null},
     familyMembers: {type: Number, default: 0},
-    fullName: {type: String, default: ""},
     cityAvg: {type: Number, default: null}
 })
 
