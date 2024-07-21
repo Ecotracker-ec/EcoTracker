@@ -17,6 +17,7 @@
     "@emailjs/browser": "^4.3.3",
     "@react-three/drei": "^9.106.0",
     "@react-three/fiber": "^8.16.7",
+    "axios": "^1.7.2",
     "framer-motion": "^11.2.10",
     "maath": "^0.10.7",
     "multiselect-react-dropdown": "^2.0.25",
@@ -27,6 +28,7 @@
     "react-select": "^5.8.0",
     "react-tilt": "^1.0.2",
     "react-vertical-timeline-component": "^3.6.0",
+    "recharts": "^2.12.7",
     "three": "^0.165.0"
   },
   "devDependencies": {
