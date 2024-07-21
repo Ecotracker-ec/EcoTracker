@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
-import axios from 'axios';
+import axios from 'redaxios';
 import { styles } from "../styles";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
