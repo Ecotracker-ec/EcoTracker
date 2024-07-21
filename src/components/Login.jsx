@@ -9,15 +9,29 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [pass, setpass] = useState("");
+  const [email, setemail] = useState("");
   const navigate = useNavigate();
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission
-
-    // Here you can handle form validation or submission logic
-
-    // Navigate to the Userinfo page
-    navigate('/homepage');
+  const handlepassChange = (e) => {
+    setpass(e.target.value);
   };
+  const handlemailChange = (e) => {
+    setemail(e.target.value);
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const resp = await axios.post('domainName/auth/login', { email: email, password: pass });
+      const token = resp.cookies.token
+      localStorage.setItem('token', token)
+      console.log(resp.data)
+      navigate('/homepage');
+    } catch (error) {
+      console.log(error.resp)
+    }
+  };
+
+
   return (
     <div className="login-main">
       <div className="login-left">
@@ -33,8 +47,8 @@ const Login = () => {
             <p><br></br> Welcome back!<br></br>Please enter your details</p>
             <form onSubmit={handleSubmit}>
               <div className="pass-input-div">
-                <input type="email" placeholder="Email" required />
-                <input type={showPassword ? "text" : "password"} placeholder="Password" required />
+                <input type="email" name="email" value={email} onChange={handlemailChange} placeholder="Email" required />
+                <input name="pass" value={pass} onChange={handlepassChange} type={showPassword ? "text" : "password"} placeholder="Password" required />
                 {showPassword ? <FaEyeSlash onClick={() => { setShowPassword(!showPassword) }} /> : <FaEye onClick={() => { setShowPassword(!showPassword) }} />}
 
               </div>

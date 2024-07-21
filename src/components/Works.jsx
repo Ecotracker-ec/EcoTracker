@@ -1,12 +1,60 @@
-import React from "react";
-import {Tilt} from "react-tilt";
+import React, { useEffect, useState } from "react";
+import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
-
+import axios from 'axios';
 import { styles } from "../styles";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+
+const Works = () => {
+  const [user, setUser] = useState(null);
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await axios.get('domainName/auth/getUser', {
+          headers: {
+            'Authorization': token
+          }
+        });
+        setUser(res.data);
+      } catch (err) {
+        console.log(`Error: ${err}`);
+      }
+    };
+
+    fetchUser();
+  }, [token]);
+
+  return (
+    <div className="relative z-0 bg-primary">
+      <Navbar />
+      <div className='mt-20 ml-40'>
+        <motion.div variants={textVariant()}>
+          <h2 className={`${styles.sectionHeadText}`}>Rewards</h2>
+          <p className={`${styles.sectionSubText} `}>Spend Wisely</p>
+          <br></br>
+          {user ? (
+            <p className={`${styles.sectionSubText} `}> Points {user.coins}</p>
+          ) : (
+            <p className={`${styles.sectionSubText} `}>Loading points...</p>
+          )}
+        </motion.div>
+
+        <div className='mt-20 flex flex-wrap gap-7'>
+          {projects.map((project, index) => (
+            <ProjectCard key={`project-${index}`} index={index} {...project} />
+          ))}
+        </div>
+      </div>
+      <br /><br /><br /><br /><br /><br />
+      <Footer />
+    </div>
+  );
+};
 
 const ProjectCard = ({
   index,
@@ -33,7 +81,6 @@ const ProjectCard = ({
             className='w-full h-full object-cover rounded-2xl'
           />
         </div>
-
         <div className='mt-5'>
           <h3 className='text-white font-bold text-[24px] text-center'>{name}</h3>
           <p className='mt-2 text-secondary text-[14px] text-center'>{description}</p>
@@ -46,26 +93,4 @@ const ProjectCard = ({
   );
 };
 
-const Works = () => {
-  return (
-    <div className="relative z-0 bg-primary">
-      <Navbar/>
-      <div className='mt-20 ml-40'>
-        <motion.div variants={textVariant()}>
-          <h2 className={`${styles.sectionHeadText}`}>Rewards</h2>
-          <p className={`${styles.sectionSubText} `}>Spend Wisely</p>
-        </motion.div>
-
-        <div className='mt-20 flex flex-wrap gap-7'>
-          {projects.map((project, index) => (
-            <ProjectCard key={`project-${index}`} index={index} {...project} />
-          ))}
-        </div>
-        
-      </div><br /><br /><br /><br /><br /><br />
-      <Footer/>
-     </div>
-  );
-};
-
-export default Works
+export default Works;

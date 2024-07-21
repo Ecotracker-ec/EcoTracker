@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@100;200;300;400;500;600;700;800&display=swap');
+
+
+/* components/Dashboard.css */
+
+.dashboard-container {
+    padding: 20%;
+    padding-top:30vh;
+    width: 100%;
+  }
+  
+  .chart-container {
+    margin-bottom: 50px;
+  }
+  
+  .top-emissions-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .top-emission-item {
+    margin-bottom: 10px;
+  }
+  
+  .recommendations-container {
+    margin-top: 20px;
+  }
+  

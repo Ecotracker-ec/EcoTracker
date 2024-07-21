@@ -6,23 +6,32 @@ import "./style/indexuserinfo.css";
 import "./style/responsive.css"
 
 const Userinfo = () => {
-  const [Fullname, setFullname] = useState("");
   const [State, setState] = useState("");
   const [City, setCity] = useState("");
   const [Member, setMember] = useState("");
   const navigate = useNavigate(); // Initialize useNavigate
 
-  const handleSubmit = (event) => {
-    event.preventDefault(); 
-    navigate('/homepage');
-  };
   const handleStateChange = (e) => {
     setState(e.target.value);
   };
   const handleCityChange = (e) => {
     setCity(e.target.value);
   };
-
+  const handlemembChange = (e) => {
+    setMember(e.target.value);
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const email = localStorage.getItem('email')
+      localStorage.removeItem('email')
+      const resp = await axios.post('domainName/auth/', { email: email, city: City, state: State, familyMembers: Member });
+      console.log(resp.data)
+      navigate('/userinfo');
+    } catch (error) {
+      console.log(error.resp)
+    }
+  };
   return (
     <div className="userinf-main">
       <div className="userinf-left">
@@ -31,13 +40,13 @@ const Userinfo = () => {
       <div className="userinf-right">
         <div className="userinf-right-container">
           <div className="userinf-logo">
-            <img src={Logo} alt="logo of EcoTracker" className="logo"/>
+            <img src={Logo} alt="logo of EcoTracker" className="logo" />
           </div>
           <div className="userinf-center">
             <h2>Welcome !</h2>
             <p>Fill this to get us to know you better</p>
             <form onSubmit={handleSubmit}>
-              <input type="number" name="members" placeholder="Number of members at house" required />
+              <input type="number" name="members" onChange={handlemembChange} value={Member} placeholder="Number of members at house" required />
               <select className="state" onChange={handleStateChange} value={State} required>
                 <option value="">Select Region</option>
                 <option value="ANDAMAN&NICOBARISLANDS">ANDAMAN & NICOBAR ISLANDS</option>

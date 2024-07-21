@@ -21,8 +21,8 @@ export const navLinks = [
     title: "Calc",
   },
   {
-    id: "login",
-    title: "Login",
+    id: "dashboard",
+    title: "Dashboard",
   }, {
     id: "faq",
     title: 'FAQ'
@@ -32,6 +32,9 @@ export const navLinks = [
   }, {
     id: "reward",
     title: 'Reward'
+  }, {
+    id: "logout",
+    title: 'Logout'
   }
 ];
 const services = [

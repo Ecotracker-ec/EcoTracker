@@ -8,7 +8,7 @@ export const quiz = {
             choices: ['Solar power', 'Biogas', 'Firewood', 'Electricity'],
             type: 'MCQs',
             correctAnswer: 'Firewood',
-            explanation: 'Firewood is the most common source of household energy in rural India due to its availability and low cost.',
+            explanation: 'Firewood is the most common source of  household energy in rural India due to its availability and low cost.',
         },
         {
             question: 'Which Indian city has been recognized for its efforts in waste segregation and recycling?',
