@@ -17,6 +17,7 @@ const Navbar = () => {
           className="flex items-center gap-2"
           onClick={() => {
             setActive("");
+            localStorage.removeItem('userEmail');
             window.scrollTo(0, 0);
           }}
         >

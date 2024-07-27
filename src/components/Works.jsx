@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
-import axios from 'redaxios';
+import axios from 'axios';
 import { styles } from "../styles";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
@@ -9,13 +9,20 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 const Works = () => {
+  const userEmail = localStorage.getItem('userEmail');
+  useEffect(() => {
+    if (!userEmail) {
+      // Redirect to login if email is not found in local storage
+      window.location.href = "/login";
+    }
+  }, [userEmail]);
   const [user, setUser] = useState(null);
   const token = localStorage.getItem('token');
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get('domainName/auth/getUser', {
+        const res = await axios.get('https://ecotracker-t8em.onrender.com/auth/getUser', {
           headers: {
             'Authorization': token
           }

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
@@ -8,6 +8,13 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 const Contact = () => {
+  const userEmail = localStorage.getItem('userEmail');
+  useEffect(() => {
+    if (!userEmail) {
+      // Redirect to login if email is not found in local storage
+      window.location.href = "/login";
+    }
+  }, [userEmail]);
   const formRef = useRef();
   const [form, setForm] = useState({
     name: "",

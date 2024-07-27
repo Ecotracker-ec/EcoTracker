@@ -4,9 +4,19 @@ import axios from 'axios';
 import './style/indexdashboard.css';
 
 const Dashboard = () => {
+  const userEmail = localStorage.getItem('userEmail');
+  useEffect(() => {
+    if (!userEmail) {
+      // Redirect to login if email is not found in local storage
+      alert("You need to login first to perform this action");
+      window.location.href = "/login";
+    }
+  }, [userEmail]);
   const [data, setData] = useState([]);
   const [topEmissions, setTopEmissions] = useState([]);
   const [recommendations, setRecommendations] = useState([]);
+
+  
 
   const allMonths = [
     { month: 'January', year: 2024 },
@@ -25,7 +35,7 @@ const Dashboard = () => {
 
   let emissions = null;
   const token = localStorage.getItem('token')
-  axios.get('domainName/calc/getEmissions', {
+  axios.get('https://ecotracker-t8em.onrender.com/calc/getEmissions', {
     headers: {
       'Authorization': token
     }

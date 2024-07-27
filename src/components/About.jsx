@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import React from 'react'
+import React, { useEffect, useRef, useState } from "react";
 import {Tilt} from 'react-tilt'
 import { styles } from '../styles'
 import { services } from '../constants'
@@ -8,6 +8,13 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 
 const ServiceCard = ({ index, title, icon}) => {
+  const userEmail = localStorage.getItem('userEmail');
+  useEffect(() => {
+    if (!userEmail) {
+      alert("You need to login first to perform this action");
+      window.location.href = "/login";
+    }
+  }, [userEmail]);
   return(
     <Tilt className='xs:w-[250px] w-full'>
       <motion.div

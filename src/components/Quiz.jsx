@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Contact, Hero, Navbar, StarsCanvas } from '.';
 import { quiz } from './questions';
 import './style/indexquiz.css';
 
 const Quiz = () => {
+  const userEmail = localStorage.getItem('userEmail');
+  useEffect(() => {
+    if (!userEmail) {
+      // Redirect to login if email is not found in local storage
+      alert("You need to login first to perform this action");
+      window.location.href = "/login";
+    }
+  }, [userEmail]);
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showResult, setShowResult] = useState(false);

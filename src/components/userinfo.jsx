@@ -4,13 +4,21 @@ import Image from "./assets/LogoWithTextHorizontal.svg";
 import Logo from "./assets/logo.svg";
 import "./style/indexuserinfo.css";
 import "./style/responsive.css"
+import axios from 'axios'
 
 const Userinfo = () => {
+  const userEmail = localStorage.getItem('userEmail');
+  useEffect(() => {
+    if (!userEmail) {
+      // Redirect to login if email is not found in local storage
+      window.location.href = "/signup";
+    }
+  }, [userEmail]);
   const [State, setState] = useState("");
   const [City, setCity] = useState("");
   const [Member, setMember] = useState("");
   const navigate = useNavigate(); // Initialize useNavigate
-
+  const [email, setEmail] = useState("");
   const handleStateChange = (e) => {
     setState(e.target.value);
   };
@@ -20,18 +28,23 @@ const Userinfo = () => {
   const handlemembChange = (e) => {
     setMember(e.target.value);
   };
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const email = localStorage.getItem('email')
-      localStorage.removeItem('email')
-      const resp = await axios.post('domainName/auth/', { email: email, city: City, state: State, familyMembers: Member });
-      console.log(resp.data)
-      navigate('/userinfo');
+      const resp = await axios.post('https://ecotracker-t8em.onrender.com/auth/additionalInfo', { email: userEmail, city: City, state: State, familyMembers: Member });
+      navigate('/homepage');
     } catch (error) {
+      console.log(email)
+      console.log(City)
+      console.log(State)
+      console.log(Member)
       console.log(error.resp)
-    }
-  };
+    }
+  };
   return (
     <div className="userinf-main">
       <div className="userinf-left">
@@ -46,6 +59,14 @@ const Userinfo = () => {
             <h2>Welcome !</h2>
             <p>Fill this to get us to know you better</p>
             <form onSubmit={handleSubmit}>
+              <input
+                type="email"
+                name="email"
+                value={email}
+                onChange={handleEmailChange}
+                placeholder="Enter a valid email"
+                required
+              />
               <input type="number" name="members" onChange={handlemembChange} value={Member} placeholder="Number of members at house" required />
               <select className="state" onChange={handleStateChange} value={State} required>
                 <option value="">Select Region</option>

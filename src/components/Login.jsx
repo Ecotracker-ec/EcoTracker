@@ -6,6 +6,7 @@ import { FaEyeSlash } from "react-icons/fa6";
 import "./style/indexLogin.css";
 import "./style/responsive.css";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,12 +22,12 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const resp = await axios.post('domainName/auth/login', { email: email, password: pass });
-      const token = resp.cookies.token
-      localStorage.setItem('token', token)
+      const resp = await axios.post('https://ecotracker-t8em.onrender.com/auth/login', { email: email, password: pass });
       console.log(resp.data)
+      localStorage.setItem('userEmail', email); 
       navigate('/homepage');
     } catch (error) {
+      console.log(pass)
       console.log(error.resp)
     }
   };
@@ -54,7 +55,7 @@ const Login = () => {
               </div>
 
               <div className="remeber-div">
-                <a href="recover" className="forgot-pass-link">
+                <a href="#" className="forgot-pass-link">
                   Forgot password?
                 </a>
               </div>
