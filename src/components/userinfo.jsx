@@ -36,13 +36,14 @@ const Userinfo = () => {
     e.preventDefault();
     try {
       const resp = await axios.post('https://ecotracker-t8em.onrender.com/auth/additionalInfo', { email: userEmail, city: City, state: State, familyMembers: Member });
-      navigate('/homepage');
+      navigate('/login');
     } catch (error) {
       console.log(email)
       console.log(City)
       console.log(State)
       console.log(Member)
       console.log(error.resp)
+      navigate('/signup');
     }
   };
   return (
@@ -59,14 +60,6 @@ const Userinfo = () => {
             <h2>Welcome !</h2>
             <p>Fill this to get us to know you better</p>
             <form onSubmit={handleSubmit}>
-              <input
-                type="email"
-                name="email"
-                value={email}
-                onChange={handleEmailChange}
-                placeholder="Enter a valid email"
-                required
-              />
               <input type="number" name="members" onChange={handlemembChange} value={Member} placeholder="Number of members at house" required />
               <select className="state" onChange={handleStateChange} value={State} required>
                 <option value="">Select Region</option>

@@ -41,18 +41,22 @@ const services = [
   {
     title: "Climate Change",
     icon: web,
+    val: 750
   },
   {
     title: "Personal Responsibility",
     icon: mobile,
+    val:1450
   },
   {
     title: "Consumer Awareness",
     icon: backend,
+    val:2500
   },
   {
     title: "Policy & Regulation",
     icon: creator,
+    val:3050
   },
 ];
 

@@ -24,7 +24,11 @@ const Login = () => {
     try {
       const resp = await axios.post('https://ecotracker-t8em.onrender.com/auth/login', { email: email, password: pass });
       console.log(resp.data)
-      localStorage.setItem('userEmail', email); 
+      const { token } = resp.data;
+ // Assuming the token is returned in the response data
+      localStorage.setItem('token', token);
+      console.log(token);
+      localStorage.setItem('userEmail', email);
       navigate('/homepage');
     } catch (error) {
       console.log(pass)

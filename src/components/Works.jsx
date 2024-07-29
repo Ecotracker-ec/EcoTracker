@@ -18,7 +18,7 @@ const Works = () => {
   }, [userEmail]);
   const [user, setUser] = useState(null);
   const token = localStorage.getItem('token');
-
+  console.log(token);
   useEffect(() => {
     const fetchUser = async () => {
       try {

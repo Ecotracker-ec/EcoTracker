@@ -14,7 +14,6 @@ import Quiz from './components/Quiz';
 import Dashboard from './components/Dashboard';
 import Works from './components/Works';
 import Forgetpswd from './components/forgetpswd';
-import QuizList from './components/QuizList';
 
 const App = () => {
    return (
@@ -29,7 +28,6 @@ const App = () => {
          <Route path="/contact" element={<Contact />} />
          <Route path="/faq" element={<Experience />} />
          <Route path="/quiz" element={<Quiz />} />
-         <Route path="/quizs" element={<QuizList />} />
          <Route path="/dashboard" element={<Dashboard />} />
          <Route path="/reward" element={<Works />} />
          <Route path="/recover" element={<Forgetpswd />} />

@@ -16,7 +16,7 @@ const Hero = () => {
           ​the environment<br/> and discover practical ways to reduce it.
           </p>
           <div className="bg-[#4af41f]/70 font-bold h-[50px] w-[200px] ml-5 mt-11 flex items-center justify-center rounded-[20px] ">
-            <a href="login" className='  text-black '>Get Started Today</a>
+            <a href="calculator" className='  text-black '>Get Started Today</a>
           </div>
         </div>
       </div>

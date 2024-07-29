@@ -1,17 +1,44 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Contact, Hero, Navbar, StarsCanvas } from '.';
 import { quiz } from './questions';
 import './style/indexquiz.css';
+import axios from "axios";
 
 const Quiz = () => {
   const userEmail = localStorage.getItem('userEmail');
+  const navigate = useNavigate();
   useEffect(() => {
     if (!userEmail) {
       // Redirect to login if email is not found in local storage
-      alert("You need to login first to perform this action");
       window.location.href = "/login";
     }
   }, [userEmail]);
+  const [user, setUser] = useState("");
+  const token = localStorage.getItem('token');
+  console.log(token);
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await axios.get('https://ecotracker-t8em.onrender.com/auth/getUser', {
+          headers: {
+            'Authorization': token
+          }
+        });
+        setUser(res.data);
+        if (res.data.givenQuiz) {
+          alert("You can attempt quiz only once");
+          navigate('/reward')
+        }
+        else{
+          alert("You can attempt quiz only once"); 
+        }
+      } catch (err) {
+        console.log(`Error: ${err}`);
+      }
+    };
+    fetchUser();
+  }, [token]);
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showResult, setShowResult] = useState(false);
@@ -24,7 +51,22 @@ const Quiz = () => {
 
   const { questions } = quiz;
   const { question, choices, correctAnswer, explanation } = questions[activeQuestion];
-
+  const sendpoints = async(e) => {
+    try {
+      console.log(token);
+      console.log(userEmail);
+      const resp = await axios.post('https://ecotracker-t8em.onrender.com/auth/coins', {
+        numCorrect: result.correctAnswers,
+      }, {
+        headers: {
+          'Authorization': token // Set the Authorization header
+        }
+      });
+      console.log(result.correctAnswers);
+    } catch (error) {
+      console.error("Error during storing data", error);
+    }
+  };
   const onClickNext = () => {
     if (selectedAnswer !== null) {
       setAnswers((prev) => [
@@ -41,16 +83,17 @@ const Quiz = () => {
       setResult((prev) =>
         selectedAnswer === correctAnswer
           ? {
-              ...prev,
-              score: prev.score + 5,
-              correctAnswers: prev.correctAnswers + 1,
-            }
+            ...prev,
+            score: prev.score + 2,
+            correctAnswers: prev.correctAnswers + 1,
+          }
           : { ...prev, wrongAnswers: prev.wrongAnswers + 1 }
       );
 
       if (activeQuestion !== questions.length - 1) {
         setActiveQuestion((prev) => prev + 1);
       } else {
+        sendpoints();
         setShowResult(true);
       }
 
