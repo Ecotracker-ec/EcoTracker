@@ -1,0 +1,19 @@
+/* QuizQuestions.css */
+
+.quiz-questions {
+    padding: 20px;
+  }
+  
+  .quiz-questions h2 {
+    margin-bottom: 20px;
+  }
+  
+  .quiz-questions ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .quiz-questions li {
+    margin-bottom: 15px;
+  }
+  

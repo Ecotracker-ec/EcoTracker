@@ -2,8 +2,9 @@ import Emission from '../models/EmissionModel.js'
 
 export async function createEmission(req, res) {
     try {
-        const {email, month, year, area, electricity, gas, gasusage, wood, priv, waste, meal, meals, renewable, renewunit} = req.body
-        //const email = req.body.email
+        const {month, year, area, electricity, gas, gasusage, wood, priv, waste, meal, meals, renewable, renewunit} = req.body
+        const email = req.user.email
+
         const checkEmission = await Emission.findOne({
             user: email,
             month: month,
@@ -70,7 +71,8 @@ export async function createEmission(req, res) {
 export async function getEmission(req, res) {
     try {
         //const email = req.body.email
-        const {email, month, year} = req.body
+        const {month, year} = req.body
+        const email = req.user.email
 
         const emission = await Emission.findOne({
             user: email,
@@ -91,5 +93,17 @@ export async function getALlEmissions(req, res) {
     }
     catch (err) {
         res.status(500).send("Error finding emissions")
+    }
+}
+
+export async function getLast12Emissions(req, res) {
+    try {
+        const email = req.user.email
+        const emissions = await Emission.find({user: email}).sort({createdAt: -1}).limit(12).exec()
+
+        res.status(200).send(emissions)
+    }
+    catch (err) {
+        res.status(500).send(`error: ${err}`)
     }
 }

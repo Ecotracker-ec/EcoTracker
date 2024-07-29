@@ -1,9 +1,17 @@
-import React from 'react'
-import { Hero, Navbar, Experience } from '../components'
-import { styles } from '../styles'
+import React, { useEffect, useRef, useState } from "react";
+import { Hero,Navbar, Experience } from '.'
 import { industry, analysis } from '../assets'
+import './homepage.css';
 
 function Home() {
+  const userEmail = localStorage.getItem('userEmail');
+  useEffect(() => {
+    if (!userEmail) {
+      // Redirect to login if email is not found in local storage
+      alert("You need to login first to perform this action");
+      window.location.href = "/login";
+    }
+  }, [userEmail]);
   return (
     <div className='back'>
       <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center h-[700px]'>

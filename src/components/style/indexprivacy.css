@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+
+.privacy-main {
+  display: flex;
+}
+
+.privacy-left {
+  flex-grow: 0;
+  height: 200vh;
+  background-color: #0d0c0c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.privacy-left img {
+  height: 50vh;
+  width: 400px;
+}
+
+.privacy-right {
+
+  height: 200vh;
+  flex-grow: 2;
+  background-color: aliceblue;
+
+}
+
+.privacy-right-container {
+  height: 200vh;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding-top:3vh;
+}
+
+.privacy-right form {
+  display: flex;
+  flex-direction: column;
+}
+
+.privacy-logo {
+  align-self: center;
+  padding-top: 70px;
+}
+
+.privacy-center {
+  margin: auto 0;
+}
+
+.privacy-logo img {
+  width: 80px;
+}
+
+.privacy-center h2 {
+  font-size: 3rem;
+}
+
+.privacy-center {
+  text-align: left;
+}
+
+.small-bullet {
+  font-size: 2rem;
+}
+
+.privacy-center p {
+  font-size: 1rem;
+}
+
+.privacy-center-options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.det {
+  padding-left: 2vw;
+}
+
+.link a {
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 2px;
+  color: rgb(8, 0, 255);
+}
+
+.link a:hover {
+  text-decoration: underline;
+}
+
+.logo:hover {
+  transform: rotate(720deg);
+}
+
+.logo {
+  transition: transform 3s linear;
+}

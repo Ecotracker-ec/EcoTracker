@@ -8,7 +8,8 @@
     "homepage": ".",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node ./backend/app.js"
   },
   "dependencies": {
     "@capacitor/android": "^6.1.0",
@@ -17,15 +18,26 @@
     "@emailjs/browser": "^4.3.3",
     "@react-three/drei": "^9.106.0",
     "@react-three/fiber": "^8.16.7",
+    "@trycourier/courier": "^6.2.1",
+    "axios": "^1.7.2",
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
     "framer-motion": "^11.2.10",
+    "jsonwebtoken": "^9.0.2",
     "maath": "^0.10.7",
+    "mongoose": "^8.5.1",
     "multiselect-react-dropdown": "^2.0.25",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.2.1",
     "react-router-dom": "^6.23.1",
     "react-select": "^5.8.0",
     "react-tilt": "^1.0.2",
     "react-vertical-timeline-component": "^3.6.0",
+    "recharts": "^2.12.7",
+    "redaxios": "^0.5.1",
     "three": "^0.165.0"
   },
   "devDependencies": {
