@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, LineChart, Line, Legend } from 'recharts';
+import Chart from "chart.js/auto";
+import { CategoryScale } from "chart.js";
 import axios from 'axios';
 import './style/indexdashboard.css';
 import Navbar from "./Navbar";
+import App from "./chart.jsx"
+Chart.register(CategoryScale);
 
 const Dashboard = () => {
   const userEmail = localStorage.getItem('userEmail');
-  const [totalEmissions, setTotalEmissions] = useState([]);
+
   useEffect(() => {
     if (!userEmail) {
       // Redirect to login if email is not found in local storage
@@ -14,68 +17,87 @@ const Dashboard = () => {
       window.location.href = "/login";
     }
   }, [userEmail]);
+
   const token = localStorage.getItem('token');
   const [data, setData] = useState([]);
+  const [totalValues, setTotalValues] = useState({});
   const [topEmissions, setTopEmissions] = useState([]);
   const [recommendations, setRecommendations] = useState([]);
   const [user, setUser] = useState(null);
-  const [allem, setAllem] = useState(null);
 
-  let emissions = null;
-  if (!token) {
-    console.log("no token");
-  }
-  emissions = axios.get('https://ecotracker-t8em.onrender.com/calc/getEmissions', {
-    headers: {
-      'Authorization': token
-    }
-  }).then(res => {
-    emissions = res.data;
-    console.log(res.data);
-    console.log(res.data.length)
-    setAllem(res.data);
-    const emissions = emissions.map(item => item.totalemission);
-    setTotalEmissions(emissions);
-  }).catch(err => {
-    console.log(Error);
-  });
   useEffect(() => {
-    const fetchUser = async () => {
+    const fetchData = async () => {
       try {
-        const userres = await axios.get('https://ecotracker-t8em.onrender.com/auth/getUser', {
+        const emissionsResponse = await axios.get('https://ecotracker-t8em.onrender.com/calc/getEmissions', {
           headers: {
             'Authorization': token
           }
         });
-        setUser(userres.data);
-        console.log(userres);
+        const emissionsData = emissionsResponse.data;
+
+        setData(emissionsData);
+
+        // Calculate total values for each parameter
+        const totals = emissionsData.reduce((accumulator, currentValue) => {
+          return {
+            electricity: (accumulator.electricity || 0) + currentValue.electricity * 0.82,
+            gasusage: (accumulator.gasusage || 0) + currentValue.gasusage * 22.73,
+            wood: (accumulator.wood || 0) + currentValue.wood * 6.4,
+            priv: (accumulator.priv || 0) + currentValue.priv / 36.6,
+            waste: (accumulator.waste || 0) + currentValue.waste * 1.49 * 4,
+            meals: (accumulator.meals || 0) + currentValue.meals * 10,
+            renewunit: (accumulator.renewunit || 0) + currentValue.renewunit * 0.82,
+            totalemission: (accumulator.totalemission || 0) + currentValue.totalemission,
+          };
+        }, {});
+        setTotalValues(totals);
+
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    const fetchUser = async () => {
+      try {
+        const userResponse = await axios.get('https://ecotracker-t8em.onrender.com/auth/getUser', {
+          headers: {
+            'Authorization': token
+          }
+        });
+        setUser(userResponse.data);
       } catch (err) {
         console.log(`Error: ${err}`);
       }
     };
 
-    fetchUser();
+    if (token) {
+      fetchData();
+      fetchUser();
+    }
   }, [token]);
 
-  const mergeData = (userData, allMonths) => {
-    const defaultValues = {
-      electricity: 0,
-      gasusage: 0,
-      wood: 0,
-      priv: 0,
-      waste: 0,
-      meals: 0,
-      totalemission: 0,
-      cityAverage: user.cityAvg, // Example average value
-      countryAverage: 250 // Example average value
-    };
+  
 
+    return (
+      <div>
+        {/* <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
+        <Navbar />
+      </div> */}
+        <div className="dashboard">
+          <h2>Dashboard</h2>
+          <p>Total Electricity: {totalValues.electricity}</p>
+          <p>Total Gas Usage: {totalValues.gasusage}</p>
+          <p>Total Wood: {totalValues.wood}</p>
+          <p>Total Private Transport: {totalValues.priv}</p>
+          <p>Total Waste: {totalValues.waste}</p>
+          <p>Total Meals: {totalValues.meals}</p>
+          <p>Total Renewable Units: {totalValues.renewunit}</p>
+          <p>Total Emissions: {totalValues.totalemission}</p>
+          {/* Add your chart components here */}
+        </div>
+        <App/>
+      </div>
+    );
   };
- return (
-    <div>
-      
-    </div>
-  );
-};
 
-export default Dashboard;
+  export default Dashboard;
