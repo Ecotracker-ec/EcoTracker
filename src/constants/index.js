@@ -103,7 +103,7 @@ const projects = [
   {
     name: "Eco - Friendly Jute Tote Bag 🛍",
     description:
-      "Cost: 50 💰",
+      "50",
     tags: [
       {
         name: "react",
@@ -124,7 +124,7 @@ const projects = [
   {
     name: "Tree Planting Certificate 🌳",
     description:
-      "Cost: 150 💰",
+      "30",
     tags: [
       {
         name: "react",
@@ -145,7 +145,7 @@ const projects = [
   {
     name: "Stainless Steel Water Bottle 💧",
     description:
-      "Cost: 75 💰",
+      "75",
     tags: [
       {
         name: "nextjs",
@@ -166,7 +166,7 @@ const projects = [
   {
     name: "Reusable Metal Straw Set 🥤",
     description:
-      "Cost: 80 💰",
+      "80",
     tags: [
       {
         name: "react",
@@ -187,7 +187,7 @@ const projects = [
   {
     name: "Bamboo Toothbrush Set 🦷",
     description:
-      "Cost: 100 💰",
+      "100",
     tags: [
       {
         name: "react",
@@ -208,7 +208,7 @@ const projects = [
   {
     name: "Plant-Based Meal Recipe Book 📖",
     description:
-      "Cost: 120 💰",
+      "120",
     tags: [
       {
         name: "react",

@@ -21,7 +21,7 @@ export const quiz = {
             question: 'How can using a pressure cooker help reduce carbon emissions in Indian households?',
             choices: ['It uses more water', 'It increases cooking time', 'It releases more heat', 'It cooks food faster, saving energy'],
             type: 'MCQs',
-            correctAnswer: 'It cooks food faster, saving energy',
+            correctAnswer: 'It releases more heat',
             explanation: 'Pressure cookers cook food faster, saving energy and reducing cooking time, which leads to lower carbon emissions.',
         },
         {

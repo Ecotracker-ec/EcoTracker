@@ -4,16 +4,22 @@ import { connect } from 'mongoose'
 import dotenv from 'dotenv'
 import authRoutes from './routes/auth.js'
 import calcRoutes from './routes/calc.js'
+import cors from 'cors';
 
 // const authRoutes = require('./routes/auth')
 // const calcRoutes = require('./routes/calc')
 
 const app = express()
-const port = process.env.PORT
+const port =process.env.PORT || 3000
 
 app.use(json())
 
 dotenv.config()
+
+app.use(cors({
+  origin: '*', // Allow all origins
+}));
+
 
 const username = process.env.DB_USERNAME
 const password = process.env.DB_PASSWORD
