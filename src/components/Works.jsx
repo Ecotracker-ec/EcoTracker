@@ -8,8 +8,12 @@ import { fadeIn, textVariant } from "../utils/motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
+const token = localStorage.getItem('token');
+const userEmail = localStorage.getItem('userEmail');
+
+
+
 const Works = () => {
-  const userEmail = localStorage.getItem('userEmail');
   useEffect(() => {
     if (!userEmail) {
       // Redirect to login if email is not found in local storage
@@ -17,7 +21,6 @@ const Works = () => {
     }
   }, [userEmail]);
   const [user, setUser] = useState(null);
-  const token = localStorage.getItem('token');
   console.log(token);
   useEffect(() => {
     const fetchUser = async () => {
@@ -63,6 +66,25 @@ const Works = () => {
   );
 };
 
+const sendpoints = () => {
+  try {
+    console.log(token);
+    console.log(userEmail);
+    const resp = axios.post('https://ecotracker-t8em.onrender.com/auth/coins', {
+      numCorrect: -(description/2),
+    }, {
+      headers: {
+        'Authorization': token // Set the Authorization header
+      }
+    });
+    console.log(description);
+  } catch (error) {
+    console.error("Error during storing data", error);
+  }
+};
+
+
+
 const ProjectCard = ({
   index,
   name,
@@ -71,6 +93,23 @@ const ProjectCard = ({
   image,
   source_code_link,
 }) => {
+  const redeemButton = async(e) => {
+    try {
+      console.log(token);
+      console.log(userEmail);
+      const resp = axios.post('https://ecotracker-t8em.onrender.com/auth/coins', {
+        numCorrect: -(description/2),
+      }, {
+        headers: {
+          'Authorization': token // Set the Authorization header
+        }
+      });
+      console.log(description);
+    } catch (error) {
+      console.error("Error during storing data", error);
+    }
+    window.scrollTo(0,0)
+}
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.5)}>
       <Tilt
@@ -92,7 +131,7 @@ const ProjectCard = ({
           <h3 className='text-white font-bold text-[24px] text-center'>{name}</h3>
           <p className='mt-2 text-secondary text-[14px] text-center'>Cost: {description} </p>
           <div className="bg-[#4af41f] w-[80px] h-[25px] text-center ml-13 rounded-[10px]">
-            <button className="text-center text-black">Redeem</button>
+            <button className="text-center text-black" onClick={redeemButton}>Redeem</button>
           </div>
         </div>
         
