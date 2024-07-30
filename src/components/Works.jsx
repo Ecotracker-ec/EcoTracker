@@ -90,11 +90,12 @@ const ProjectCard = ({
         </div>
         <div className='mt-5'>
           <h3 className='text-white font-bold text-[24px] text-center'>{name}</h3>
-          <p className='mt-2 text-secondary text-[14px] text-center'>{description}</p>
+          <p className='mt-2 text-secondary text-[14px] text-center'>Cost: {description} </p>
           <div className="bg-[#4af41f] w-[80px] h-[25px] text-center ml-13 rounded-[10px]">
             <button className="text-center text-black">Redeem</button>
           </div>
         </div>
+        
       </Tilt>
     </motion.div>
   );
