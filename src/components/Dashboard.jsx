@@ -36,8 +36,12 @@ const Dashboard = () => {
           }
         });
         const emissionsData = emissionsResponse.data;
+        console.log(emissionsData.length);
         setData(emissionsData);
-
+        if(emissionsData.length=='0' || emissionsData.length==0){
+          alert("Atleast add one emission to check dashboard");
+          window.location.href = "/calculator";
+        }
         const totals = emissionsData.reduce((accumulator, currentValue) => {
           return {
             electricity: (accumulator.electricity || 0) + currentValue.electricity * 0.82,

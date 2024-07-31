@@ -932,7 +932,7 @@ const Userinfo = () => {
                   <div className="privacy">
                     <input type="checkbox" id="priv-checkbox" required />
                     <label htmlFor="priv-checkbox">
-                      I accept <a href="priv" className="link">T&C and Privacy Policy</a>.
+                      I accept <a href="privacy" className="link">T&C and Privacy Policy</a>.
                     </label>
                   </div>
                 </div>
