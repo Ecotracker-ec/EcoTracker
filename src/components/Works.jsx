@@ -7,17 +7,17 @@ import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-
-const token = localStorage.getItem('token');
-const userEmail = localStorage.getItem('userEmail');
-
+import { useNavigate } from 'react-router-dom';
 
 
 const Works = () => {
+  const token = localStorage.getItem('token');
+  const userEmail = localStorage.getItem('userEmail');
+  const [coin, SetCoin] = useState("0");
   useEffect(() => {
     if (!userEmail) {
       // Redirect to login if email is not found in local storage
-      window.location.href = "/login";
+      // window.location.href = "/login";
     }
   }, [userEmail]);
   const [user, setUser] = useState(null);
@@ -31,6 +31,7 @@ const Works = () => {
           }
         });
         setUser(res.data);
+        SetCoin(res.data.coins);
       } catch (err) {
         console.log(`Error: ${err}`);
       }
@@ -48,7 +49,7 @@ const Works = () => {
           <p className={`${styles.sectionSubText} `}>Spend Wisely</p>
           <br></br>
           {user ? (
-            <p className={`${styles.sectionSubText} `}> Points {user.coins}</p>
+            <p className={`${styles.sectionSubText} `}> Points {coin}</p>
           ) : (
             <p className={`${styles.sectionSubText} `}>Loading points...</p>
           )}
@@ -66,23 +67,6 @@ const Works = () => {
   );
 };
 
-const sendpoints = () => {
-  try {
-    console.log(token);
-    console.log(userEmail);
-    const resp = axios.post('https://ecotracker-t8em.onrender.com/auth/coins', {
-      numCorrect: -(description/2),
-    }, {
-      headers: {
-        'Authorization': token // Set the Authorization header
-      }
-    });
-    console.log(description);
-  } catch (error) {
-    console.error("Error during storing data", error);
-  }
-};
-
 
 
 const ProjectCard = ({
@@ -93,23 +77,51 @@ const ProjectCard = ({
   image,
   source_code_link,
 }) => {
-  const redeemButton = async(e) => {
-    try {
-      console.log(token);
-      console.log(userEmail);
-      const resp = axios.post('https://ecotracker-t8em.onrender.com/auth/coins', {
-        numCorrect: -(description/2),
-      }, {
-        headers: {
-          'Authorization': token // Set the Authorization header
-        }
-      });
-      console.log(description);
-    } catch (error) {
-      console.error("Error during storing data", error);
+  const token = localStorage.getItem('token');
+  const userEmail = localStorage.getItem('userEmail');
+  const [coin, SetCoin] = useState("0");
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await axios.get('https://ecotracker-t8em.onrender.com/auth/getUser', {
+          headers: {
+            'Authorization': token
+          }
+        });
+        setUser(res.data);
+        SetCoin(res.data.coins);
+      } catch (err) {
+        console.log(`Error: ${err}`);
+      }
+    };
+
+    fetchUser();
+  }, [token]);
+  const redeemButton = async (e) => {
+    console.log(user.coins, description);
+    if (user.coins >= description) {
+      try {
+        console.log(token);
+        console.log(userEmail);
+        const resp = await axios.post('https://ecotracker-t8em.onrender.com/auth/coins', {
+          numCorrect: -(description / 2),
+        }, {
+          headers: {
+            'Authorization': token // Set the Authorization header
+          }
+        });
+        console.log(description);
+        window.location.href = "/reward";
+      } catch (error) {
+        console.error("Error during storing data", error);
+      }
     }
-    window.scrollTo(0,0)
-}
+    else {
+      alert("Insufficient coins!");
+    }
+  }
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.5)}>
       <Tilt
@@ -134,7 +146,7 @@ const ProjectCard = ({
             <button className="text-center text-black" onClick={redeemButton}>Redeem</button>
           </div>
         </div>
-        
+
       </Tilt>
     </motion.div>
   );

@@ -26,12 +26,10 @@ const Quiz = () => {
           }
         });
         setUser(res.data);
+        console.log(res.data.givenQuiz);
         if (res.data.givenQuiz) {
           alert("You can attempt quiz only once");
           navigate('/reward')
-        }
-        else{
-          alert("You can attempt quiz only once"); 
         }
       } catch (err) {
         console.log(`Error: ${err}`);
@@ -51,7 +49,7 @@ const Quiz = () => {
 
   const { questions } = quiz;
   const { question, choices, correctAnswer, explanation } = questions[activeQuestion];
-  const sendpoints = async(e) => {
+  const sendpoints = async (e) => {
     try {
       console.log(token);
       console.log(userEmail);
@@ -133,7 +131,11 @@ const Quiz = () => {
             </ul>
             {selectedAnswer !== null && (
               <div className="explanation">
-                <p>{selectedAnswer === correctAnswer ? 'Correct!' : 'Incorrect.'}</p>
+                {selectedAnswer === correctAnswer ? (
+                  <p style={{ color: 'green' }}>Correct!</p>
+                ) : (
+                  <p style={{ color: 'red' }}>Incorrect.</p>
+                )}
                 <p>{explanation}</p>
               </div>
             )}
