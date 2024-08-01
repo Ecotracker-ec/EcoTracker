@@ -10,6 +10,7 @@ import { Routes, Route } from 'react-router-dom';
 import Signup from './components/signup';
 import Userinfo from './components/userinfo';
 import Login from './components/Login';
+import Logout from './components/logout';
 import Quiz from './components/Quiz';
 import Dashboard from './components/Dashboard';
 import Works from './components/Works';
@@ -21,6 +22,7 @@ const App = () => {
          <Route path="/" element={<Signup />} />
          <Route path="/userinfo" element={<Userinfo />} />
          <Route path="/login" element={<Login />} />
+         <Route path="/logout" element={<Logout />} />
          <Route path="/calculator" element={<Calculator />} />
          <Route path="/homepage" element={<Home />} />
          <Route path="/privacy" element={<Privacy />} />
