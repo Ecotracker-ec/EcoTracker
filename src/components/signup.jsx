@@ -27,6 +27,8 @@ const Signup = () => {
   };
 
   const handleSubmit = async (e) => {
+    alert("This project is still in development phase");
+    alert("The server shuts down after a period of inactivity,so there may be a delay <1 min during signup/login");
     e.preventDefault();
     try {
       // Send POST request to the backend

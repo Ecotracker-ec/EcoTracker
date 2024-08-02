@@ -22,7 +22,7 @@ const Calculator = () => {
   const [wood, setWood] = useState("0");
   const [priv, setPriv] = useState("0");
   const [waste, setWaste] = useState("0");
-  const [mealtype, setMtype] = useState("Vegeterian");
+  const [mealtype, setMtype] = useState("vegeterian");
   const [meals, setMeal] = useState("0");
   const [renewtype, setRtype] = useState("No");
   const [renewunits, setrenew] = useState("0");
@@ -77,7 +77,19 @@ const Calculator = () => {
   }
 
   const [loading, setLoading] = useState(false);
-
+  const points = ({a,b}) => {
+    if(a>=b){
+      return 0;
+    }
+    const p=0,mul=4;
+    const x= b-a;
+    while(x>1){
+      p=p+((x%10)*mul);
+      x=x/10;
+      mul*=4;
+    }
+    return p;
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -103,13 +115,30 @@ const Calculator = () => {
           'Authorization': token, // Set the Authorization header
         }
       });
-      navigate('/homepage'); // Navigate to Userinfo page
+      const emissionsResponse = await axios.get('https://ecotracker-t8em.onrender.com/calc/getEmissions', {
+        headers: {
+          'Authorization': token
+        }
+      });
+      const emissionsData = emissionsResponse.data;
+      const lastemission=0;
+      if(emissionsData.legnth>1){
+        lastemission=emissionsData[1].totalemission;
+      }
+      const resp2 = await axios.post('https://ecotracker-t8em.onrender.com/auth/coins', {
+        numCorrect: (points(emissionsData[0].totalemission,lastemission) / 2),
+      }, {
+        headers: {
+          'Authorization': token // Set the Authorization header
+        }
+      });
+      console.log(points(emissionsData[0].totalemission,lastemission),emissionsData[0].totalemission,lastemission);
+      navigate('/dashboard'); 
     } catch (error) {
       if(error.message=="Request failed with status code 400"){
         alert("Emission data for this month and year already exists");
       }
       console.log(error.message);
-      navigate('/quiz');
       console.error("Error during storing data", error);
     }
   };
@@ -137,18 +166,18 @@ const Calculator = () => {
                 <label className='flex flex-col self-stretch'>
                   <span className='text-white font-medium mb-4'>Select Month</span>
                   <select name="month" id="months" value={month} onChange={chmonth} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
-                    <option value="january">January</option>
-                    <option value="february">February</option>
-                    <option value="march">March</option>
-                    <option value="april">April</option>
-                    <option value="may">May</option>
-                    <option value="june">June</option>
-                    <option value="july">July</option>
-                    <option value="august">August</option>
-                    <option value="september">September</option>
-                    <option value="october">October</option>
-                    <option value="november">November</option>
-                    <option value="december">December</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
                   </select>
                 </label>
                 <label className='flex flex-col self-stretch'>
@@ -279,7 +308,7 @@ const Calculator = () => {
 
                 <button
                   type='submit'
-                  className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+                  className='bg-red-500 hover:bg-red-700 py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
                 >
                   {loading ? "Submiting..." : "Submit"}
                 </button>

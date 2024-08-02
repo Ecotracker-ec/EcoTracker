@@ -2,7 +2,7 @@ import Emission from '../models/EmissionModel.js'
 
 export async function createEmission(req, res) {
     try {
-        const {month, year, area, electricity, gas, gasusage, wood, priv, waste, meal, meals, renewable, renewunit} = req.body
+        const { month, year, area, electricity, gas, gasusage, wood, priv, waste, meal, meals, renewable, renewunit } = req.body
         const email = req.user.email
 
         const checkEmission = await Emission.findOne({
@@ -60,6 +60,7 @@ export async function createEmission(req, res) {
             totalemission: totalFootprint,
             user: email
         })
+        
         await emission.save()
         res.status(201).send("Created Successfully")
     }
@@ -71,7 +72,7 @@ export async function createEmission(req, res) {
 export async function getEmission(req, res) {
     try {
         //const email = req.body.email
-        const {month, year} = req.body
+        const { month, year } = req.body
         const email = req.user.email
 
         const emission = await Emission.findOne({
@@ -99,7 +100,7 @@ export async function getALlEmissions(req, res) {
 export async function getLast12Emissions(req, res) {
     try {
         const email = req.user.email
-        const emissions = await Emission.find({user: email}).sort({createdAt: -1}).limit(12).exec()
+        const emissions = await Emission.find({ user: email }).sort({ createdAt: -1 }).limit(12).exec()
 
         res.status(200).send(emissions)
     }

@@ -43,19 +43,19 @@ const Works = () => {
   return (
     <div className="relative z-0 bg-primary">
       <Navbar />
-      <div className='mt-20 ml-40'>
+      <div className='mt-20 ml-10 md:ml-60'>
         <motion.div variants={textVariant()}>
           <h2 className={`${styles.sectionHeadText}`}>Rewards</h2>
           <p className={`${styles.sectionSubText} `}>Spend Wisely</p>
           <br></br>
           {user ? (
-            <p className={`${styles.sectionSubText} `}> Points {coin}</p>
+            <p className={`${styles.sectionSubText} `}>🌳Points {coin}</p>
           ) : (
             <p className={`${styles.sectionSubText} `}>Loading points...</p>
           )}
         </motion.div>
 
-        <div className='mt-20 flex flex-wrap gap-7'>
+        <div className='mt-10 md:mt-20 mr-10 mb-10 flex flex-wrap gap-7'>
           {projects.map((project, index) => (
             <ProjectCard key={`project-${index}`} index={index} {...project} />
           ))}

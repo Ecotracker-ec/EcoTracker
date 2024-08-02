@@ -19,16 +19,24 @@ body {
   justify-content: center;
   align-items: center;
 }
-
+@media(max-width:870px){
+  .userinf-main {
+    display: flex;
+    flex-direction: column;
+  }
+  .userinf-left{
+    height: 20vh;
+  }
+}
 .userinf-left img {
-  width: 400px;
+  width: 55vh;
 }
 
 .userinf-right {
 
   height: 100vh;
 
-  flex-grow: 3;
+  flex-grow: 2;
 
 
 }
@@ -51,11 +59,11 @@ body {
 
 .userinf-logo {
   align-self: center;
-  padding-top: 70px;
+  padding-top: 50px;
 }
 
 .userinf-center {
-  margin: auto 0;
+  margin:0px;
 }
 
 .userinf-logo img {
@@ -73,7 +81,7 @@ body {
 .userinf-center p {
   font-weight: 400;
   font-size: 1.5rem;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
 }
 
 form input[type='email'],
@@ -81,7 +89,7 @@ form input[type='number'],
 form input[type='text'] {
   width: 100%;
   padding: 16px;
-  margin-bottom: 16px;
+  /* margin-bottom: 16px; */
   border: 0px;
   border-bottom: 1px solid black;
   outline: none;
@@ -91,7 +99,7 @@ form input[type='text'] {
 .state {
   width: 100%;
   padding: 16px;
-  margin-bottom: 16px;
+  /* margin-bottom: 16px; */
   border: 0px;
   border-bottom: 1px solid black;
   outline: none;
@@ -211,7 +219,7 @@ form button[type='submit'] {
   text-align: center;
   font-size: 1rem;
   padding-top: 30px;
-  padding-bottom: 40px;
+  /* padding-bottom: 40px; */
 }
 
 .userinf-bottom-p a {

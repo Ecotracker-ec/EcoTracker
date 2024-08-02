@@ -12,12 +12,11 @@ const Navbar = () => {
       className={`${styles.paddingX} w-full flex items-center py-2 fixed top-0 z-20 bg-black`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
-        <Link
-          to="/"
+      <Link
+          to="/homepage"
           className="flex items-center gap-2"
           onClick={() => {
             setActive("");
-            localStorage.removeItem('userEmail');
             window.scrollTo(0, 0);
           }}
         >

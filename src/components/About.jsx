@@ -49,15 +49,14 @@ const About = () => {
         <Navbar />
       </div>
       <div className="bg-primary flex justify-center items-center pb-10">
-        <div className="mt-40 ml-20">
+        <div className="mt-20 pt-5 mr-8 md:mt-30 ml-10 ">
           <motion.div variants={textVariant()}>
-            <p className={styles.sectionSubText}>Introduction</p>
             <h2 className={styles.sectionHeadText}>Overview</h2>
           </motion.div>
 
           <motion.p
             variants={fadeIn(" ", " ", 0.1, 1)}
-            className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+            className="mt-4 text-secondary text-[18px] max-w-3xl leading-[30px]"
           >
             A carbon footprint measures the total amount of greenhouse gases
             (GHGs), mainly carbon dioxide (CO2), released due to our activities.
@@ -75,7 +74,7 @@ const About = () => {
           <h3 className={styles.sectionHeadText}>Climate Change</h3>
           <motion.p
             variants={fadeIn(" ", " ", 0.1, 1)}
-            className="mt-4 text-secondary text-[20px] max-w-4xl leading-[30px] mb-20"
+            className=" text-secondary text-[18px] max-w-4xl leading-[30px] mb-4 md:mb-20"
           >
             Impacts of Increased Carbon Footprint on Climate : <br />
             <br /> 1. <span className="font-bold">Global Warming</span>:
@@ -99,7 +98,7 @@ const About = () => {
           <h3 className={styles.sectionHeadText}>Personal Responsilibilty</h3>
           <motion.p
             variants={fadeIn(" ", " ", 0.1, 1)}
-            className="mt-4 text-secondary text-[20px] max-w-4xl leading-[30px] mb-20"
+            className="mt-4 text-secondary text-[18px] max-w-4xl leading-[30px] mb-4 md:mb-20"
           >
             Individuals can play a significant role in reducing carbon emissions
             through various actions and lifestyle changes. Here are some ways
@@ -107,7 +106,7 @@ const About = () => {
             <br /> 1. <span className="font-bold">
               Energy Efficiency
             </span> : <br />
-            <br />
+            
             <ul className="list-disc list-inside">
               <li>
                 Use Energy-Efficient Appliances: Opt for appliances with high
@@ -121,7 +120,7 @@ const About = () => {
             </ul>
             <br />
             <br />
-            2. <span className="font-bold">Transportation</span> : <br />
+            2. <span className="font-bold">Transportation</span> : 
             <br />
             <ul className="list-disc list-inside">
               <li>
@@ -138,8 +137,7 @@ const About = () => {
             <br />
             3. <span className="font-bold">
               Home and Lifestyle Choices
-            </span> : <br />
-            <br />
+            </span>:<br />
             <ul className="list-disc list-inside">
               <li>
                 Renewable Energy: Installing solar panels or choosing a green
@@ -151,13 +149,12 @@ const About = () => {
                 sequester carbon.
               </li>
             </ul>
-            <br />
-            <br />
+            
           </motion.p>
           <h3 className={styles.sectionHeadText}>Consumer Awareness</h3>
           <motion.p
             variants={fadeIn(" ", " ", 0.1, 1)}
-            className="mt-4 text-secondary text-[20px] max-w-4xl leading-[30px] mb-20"
+            className="mt-4 text-secondary text-[18px] max-w-4xl leading-[30px] mb-4 md:mb-20"
           > 
             <ul className="list-disc list-inside">
               <li>Users provide information about their daily activities, including transportation methods, energy use at home, dietary habits, and waste management. The website calculates the user’s carbon footprint based on the provided data, offering a personalized assessment of their emissions.</li><br />
@@ -168,7 +165,7 @@ const About = () => {
           <h3 className={styles.sectionHeadText}>Policy & Regulation</h3>
           <motion.p
             variants={fadeIn(" ", " ", 0.1, 1)}
-            className="mt-4 text-secondary text-[20px] max-w-4xl leading-[30px] mb-20"
+            className="mt-4 text-secondary text-[18px] max-w-4xl leading-[30px] mb-4 md:mb-20"
           >
             <p>As a Repsonsible Citizens of India you should know these Policies and Schemes proposed by Indian Government :</p> <br />
             <ul className="list-decimal list-inside">

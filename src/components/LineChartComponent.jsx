@@ -19,15 +19,15 @@ const LineChartComponent = ({ emissionsData, cityAvg }) => {
       {
         label: 'City Average Emissions',
         data: cityAvgArray,
-        borderColor: 'rgba(255, 99, 132, 1)',
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: '#00CC66',
+        backgroundColor: '#00CC66',
         borderWidth: 2
       },
       {
         label: 'Country average',
         data: constantArray,
-        borderColor: 'rgba(54, 162, 235, 1)',
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: '#990000',
+        backgroundColor: '#990000',
         borderWidth: 2
       }
     ]

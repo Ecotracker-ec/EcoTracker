@@ -21,6 +21,7 @@ const Login = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    alert("The server shuts down after a period of inactivity,so there may be a delay <1 min during signup/login");
     try {
       const resp = await axios.post('https://ecotracker-t8em.onrender.com/auth/login', { email: email, password: pass });
       console.log(resp.data)

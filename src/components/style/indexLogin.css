@@ -20,7 +20,15 @@ body{
   justify-content: center;
   align-items: center;
 }
-
+@media(max-width:700px){
+  .login-main{
+      flex-direction: column;
+  }
+  .login-left{
+    height: 20vh;
+    padding: 15px;
+  }
+}
 .login-left img{
   width: 400px;
 }
