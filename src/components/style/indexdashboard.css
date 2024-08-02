@@ -16,20 +16,20 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width:100%;
 }
 
 
 
 .dashboard {
   display: flex;
-  flex-direction: ;
   align-items: center;
-  padding: 2rem;
+  padding: 5vh;
   flex: 1;
 }
 
 .line, .pie, .advice {
-  width: 50%;
+  width: 60%;
   max-width: 1200px;
   margin: 1rem 0;
 }
@@ -53,29 +53,38 @@ ul {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.line, .pie {
-  padding:5rem;
+.line{
+  padding:1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height:30vh;
+  height:80vh;
 }
 .pie{
+  padding:2rem;
+  height:30vh;
   display:flex;
   flex-direction: row;
   width: 100%;
-  flex-wrap:wrap;
-  justify-content: space-evenly;
-  
+  align-items: center;
+  justify-content:space-evenly;
 }
+
 .pie1{
-  height:70vh
+  height:70vh;
+  width:40vh;
+  flex-grow: 1;;
 }
 .pie2{
   height: 70vh;
+  width:40vh;
+  flex-grow:1;
 }
-
-@media (min-width: 600px) {
+@media(max-width:600px){
+  .pie{
+    flex-direction: column;
+  }
+}
   .dashboard {
     flex-direction: column;
     justify-content: space-around;
@@ -89,11 +98,24 @@ ul {
   .advice {
     flex: 1 1 100%;
   }
+  .advice li{
+    background-color: black;
+    font-weight: 500;
+    font-size:20px;
+    padding:2;
+  }
+
+/* @media (min-width: 800px) {
+  .line, .pie, .advice {
+    flex: 1 1 calc(33% - 2rem);
+  }
+  .dashboard{
+    height:300vh;
+  }
   .pie{
     flex-direction: column;
   }
 }
-
 @media (min-width: 900px) {
   .line, .pie, .advice {
     flex: 1 1 calc(33% - 2rem);
@@ -110,4 +132,4 @@ ul {
 }
 .line{
   min-height:30vh;
-}
+} */
