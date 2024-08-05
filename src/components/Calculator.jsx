@@ -81,8 +81,8 @@ const Calculator = () => {
     if(a>=b){
       return 0;
     }
-    const p=0,mul=4;
-    const x= b-a;
+    let p=0,mul=4;
+    let x= b-a;
     while(x>1){
       p=p+((x%10)*mul);
       x=x/10;
@@ -121,9 +121,12 @@ const Calculator = () => {
         }
       });
       const emissionsData = emissionsResponse.data;
-      const lastemission=0;
-      if(emissionsData.legnth>1){
+      console.log(emissionsData);
+      console.log(emissionsData.length);
+      let lastemission=0;
+      if(emissionsData.length>1){
         lastemission=emissionsData[1].totalemission;
+        console.log("hellow");
       }
       const resp2 = await axios.post('https://ecotracker-t8em.onrender.com/auth/coins', {
         numCorrect: (points(emissionsData[0].totalemission,lastemission) / 2),
