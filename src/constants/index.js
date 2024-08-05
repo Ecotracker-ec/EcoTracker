@@ -13,12 +13,8 @@ import {
 
 export const navLinks = [
   {
-    id: "about",
-    title: "About",
-  },
-  {
     id: "calculator",
-    title: "Calc",
+    title: "Calculator",
   },
   {
     id: "dashboard",
@@ -33,10 +29,30 @@ export const navLinks = [
     id: "reward",
     title: 'Reward'
   }, {
+    id: "aboutus",
+    title: 'About Us'
+  }, {
     id: "logout",
     title: 'Logout'
   }
 ];
+export const navLinkslogout = [
+  {
+    id: "aboutcf",
+    title: "About",
+  },
+  {
+    id: "faqs",
+    title: 'FAQ'
+  },{
+    id: "aboutteam",
+    title: 'About Us'
+  }, {
+    id: "signup",
+    title: 'SignUp/Login'
+  }
+];
+
 const services = [
   {
     title: "Climate Change",
@@ -46,17 +62,17 @@ const services = [
   {
     title: "Personal Responsibility",
     icon: mobile,
-    val:1450
+    val: 1450
   },
   {
     title: "Consumer Awareness",
     icon: backend,
-    val:2500
+    val: 2500
   },
   {
     title: "Policy & Regulation",
     icon: creator,
-    val:3050
+    val: 3050
   },
 ];
 

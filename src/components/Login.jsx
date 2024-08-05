@@ -30,7 +30,7 @@ const Login = () => {
       localStorage.setItem('token', token);
       console.log(token);
       localStorage.setItem('userEmail', email);
-      navigate('/homepage');
+      navigate('/about');
     } catch (error) {
       console.log(pass)
       console.log(error.resp)
