@@ -1,21 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Hero,Navbar, Experience } from '.'
+import { Hero } from '.'
+import Navbarlo from "./Navbarlogout";
 import { industry, analysis } from '../assets'
 import './homepage.css';
+import Footer from "./Footer";
 
 function Home() {
-  const userEmail = localStorage.getItem('userEmail');
-  useEffect(() => {
-    if (!userEmail) {
-      // Redirect to login if email is not found in local storage
-      alert("You need to login first to perform this action");
-      window.location.href = "/login";
-    }
-  }, [userEmail]);
   return (
     <div className='back'>
       <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center h-[700px]'>
-        <Navbar />
+        <Navbarlo />
         <Hero />
       </div>
       <div className="relative w-full bg-black pb-10">
@@ -24,7 +18,7 @@ function Home() {
           Our easy-to-use carbon footprint <br />calculator helps you understand <br />your carbon emissions
         </div>
         <div className='bg-[#e08616] w-[200px] md:w-[300px] h-[60px] md:h-[70px] flex items-center justify-center rounded-[50px] mx-auto mt-10'>
-          <a href="about" className='text-[18px] md:text-[20px] text-black font-bold'>Find out more</a>
+          <a href="aboutcf" className='text-[18px] md:text-[20px] text-black font-bold'>Find out more</a>
         </div>
       </div>
       <div className="relative w-full bg-[#e08616] pb-10">
@@ -36,9 +30,10 @@ function Home() {
           Comprehensive Analysis of your data <br />helps you understand your impact.
         </div>
       </div>
-      <div className=''>
-      <Experience/>
+      <div>
+      <Footer/>
       </div>
+      
     </div>
   )
 }

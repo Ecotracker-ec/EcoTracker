@@ -4,7 +4,7 @@ import { Tilt } from "react-tilt";
 import { styles } from "../styles";
 import { services } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
-import Navbar from "./Navbar";
+import Navbarlo from "./Navbarlogout";
 import Footer from "./Footer";
 
 const ServiceCard = ({ index, title, icon, val }) => {
@@ -39,7 +39,7 @@ const About = () => {
   return (
     <>
       <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-        <Navbar />
+        <Navbarlo />
       </div>
       <div className="bg-primary flex justify-center items-center pb-10">
         <div className="mt-20 pt-5 mr-8 md:mt-30 ml-10 ">

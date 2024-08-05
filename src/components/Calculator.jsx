@@ -20,11 +20,23 @@ const Calculator = () => {
   const [gastype, setGtype] = useState("Gas Pipeline");
   const [gasusage, setGusage] = useState("0");
   const [wood, setWood] = useState("0");
-  const [priv, setPriv] = useState("0");
-  const [waste, setWaste] = useState("0");
+  const [woodname, setWoodname] = useState("");
+  const [distva, setDistva] = useState("0");
+  const [nameva, setNameva] = useState("");
+  const [oldva, setOldva] = useState("0");
+  const [milva, setMilva] = useState("0");
+  const [fuelva, setFuelva] = useState("petrol");
+  const [distvb, setDistvb] = useState("0");
+  const [namevb, setNamevb] = useState("");
+  const [oldvb, setOldvb] = useState("0");
+  const [milvb, setMilvb] = useState("0");
+  const [fuelvb, setFuelvb] = useState("petrol");
+  const [wastes, setWastes] = useState("0");
+  const [wastew, setWastew] = useState("0");
   const [mealtype, setMtype] = useState("vegeterian");
   const [meals, setMeal] = useState("0");
   const [renewtype, setRtype] = useState("No");
+  const [wastetype, setWtype] = useState("No");
   const [renewunits, setrenew] = useState("0");
   const navigate = useNavigate();
   useEffect(() => {
@@ -57,11 +69,44 @@ const Calculator = () => {
   const chwood = (e) => {
     setWood(e.target.value)
   }
-  const chpriv = (e) => {
-    setPriv(e.target.value)
+  const chwoodname = (e) => {
+    setWoodname(e.target.value)
   }
-  const chwaste = (e) => {
-    setWaste(e.target.value)
+  const chnameva = (e) => {
+    setNameva(e.target.value)
+  }
+  const choldva = (e) => {
+    setOldva(e.target.value)
+  }
+  const chdistva = (e) => {
+    setDistva(e.target.value)
+  }
+  const chmilva = (e) => {
+    setMilva(e.target.value)
+  }
+  const chfuelva = (e) => {
+    setFuelva(e.target.value)
+  }
+  const chnamevb = (e) => {
+    setNamevb(e.target.value)
+  }
+  const choldvb = (e) => {
+    setOldvb(e.target.value)
+  }
+  const chdistvb = (e) => {
+    setDistva(e.target.value)
+  }
+  const chmilvb = (e) => {
+    setMilvb(e.target.value)
+  }
+  const chfuelvb = (e) => {
+    setFuelva(e.target.value)
+  }
+  const chwastes = (e) => {
+    setWastes(e.target.value)
+  }
+  const chwastew = (e) => {
+    setWastew(e.target.value)
   }
   const chmtype = (e) => {
     setMtype(e.target.value)
@@ -72,21 +117,24 @@ const Calculator = () => {
   const chrent = (e) => {
     setRtype(e.target.value)
   }
+  const chwastet = (e) => {
+    setWtype(e.target.value)
+  }
   const chrenew = (e) => {
     setrenew(e.target.value)
   }
 
   const [loading, setLoading] = useState(false);
-  const points = ({a,b}) => {
-    if(a>=b){
+  const points = ({ a, b }) => {
+    if (a >= b) {
       return 0;
     }
-    const p=0,mul=4;
-    const x= b-a;
-    while(x>1){
-      p=p+((x%10)*mul);
-      x=x/10;
-      mul*=4;
+    let p = 0, mul = 4;
+    let x = b - a;
+    while (x > 1) {
+      p = p + ((x % 10) * mul);
+      x = x / 10;
+      mul *= 4;
     }
     return p;
   }
@@ -103,9 +151,19 @@ const Calculator = () => {
         electricity: electricity,
         gas: gastype,
         gasusage: gasusage,
+        woodname: woodname, //name of wood used - string
         wood: wood,
-        priv: priv,
-        waste: waste,
+        priv_name_a:nameva, //name of vehicle-string
+        priv_old_a:oldva, //age of vehicle-number
+        priv_fuel_a:fuelva, //fuel type string(petrol/diesel)
+        priv_mileage_a:milva, //mileage -number
+        priv_dist_a:distva, //distance number
+        priv_name_b:namevb, //same for vehicle num 2
+        priv_old_b:oldvb,
+        priv_fuel_b:fuelvb,
+        priv_mileage_b:milvb,
+        priv_dist_b:distvb,
+        waste: wastes + wastew, //waste quantity
         meal: mealtype,
         meals: meals,
         renewable: renewtype,
@@ -121,21 +179,26 @@ const Calculator = () => {
         }
       });
       const emissionsData = emissionsResponse.data;
-      const lastemission=0;
-      if(emissionsData.legnth>1){
-        lastemission=emissionsData[1].totalemission;
+      console.log(emissionsData);
+      console.log(emissionsData.length);
+      let lastemission = 0;
+      if (emissionsData.length > 1) {
+        lastemission = emissionsData[1].totalemission;
       }
       const resp2 = await axios.post('https://ecotracker-t8em.onrender.com/auth/coins', {
-        numCorrect: (points(emissionsData[0].totalemission,lastemission) / 2),
+        numCorrect: (points(emissionsData[0].totalemission, lastemission) / 2),
       }, {
         headers: {
           'Authorization': token // Set the Authorization header
         }
       });
-      console.log(points(emissionsData[0].totalemission,lastemission),emissionsData[0].totalemission,lastemission);
-      navigate('/dashboard'); 
+      const dif = lastemission - emissionsData[0].totalemission;
+      alert('Your emission went down by ' + dif + '.');
+      alert('You got ' + points(emissionsData[0].totalemission, lastemission) + ' points.');
+      console.log(points(emissionsData[0].totalemission, lastemission), emissionsData[0].totalemission, lastemission);
+      navigate('/dashboard');
     } catch (error) {
-      if(error.message=="Request failed with status code 400"){
+      if (error.message == "Request failed with status code 400") {
         alert("Emission data for this month and year already exists");
       }
       console.log(error.message);
@@ -199,8 +262,10 @@ const Calculator = () => {
                     <option value="rural">Rural</option>
                   </select>
                 </label>
+                <hr></hr>
                 <label className='flex flex-col self-stretch'>
                   <span className='text-white font-medium mb-4'>⚡Electricity used per month(KWh)</span>
+                  <p className='text-white text-xs py-3'>Electricity details can be found on your Electricity bill under heading "Units used".</p>
                   <input
                     type='number'
                     name='electricity'
@@ -213,13 +278,14 @@ const Calculator = () => {
                 </label>
                 <label className='flex flex-col self-stretch'>
                   <span className='text-white font-medium mb-4'>🧯Type of Gas Connection</span>
-                  <select name="gas" id="gas" value={gastype} onChange={chgtype} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'> 
+                  <select name="gas" id="gas" value={gastype} onChange={chgtype} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
                     <option value="gas-cylinder">Gas Cylinder</option>
                     <option value="gas-pipeline">Pipeline</option>
                   </select>
                 </label>
                 <label className='flex flex-col self-stretch'>
                   <span className='text-white font-medium mb-4'>Number of Units used per month</span>
+                  <p className='text-white text-xs py-3'>Gas usage details can be found on your Gas bill under heading "Units used".</p>
                   <input
                     type='number'
                     name='gasusage'
@@ -243,12 +309,68 @@ const Calculator = () => {
                   />
                 </label>
                 <label className='flex flex-col self-stretch'>
-                  <span className='text-white font-medium mb-4'>🚚Private vehicle usage in km</span>
+                  <span className='text-white font-medium mb-4'>Type of wood used</span>
+                  <input
+                    type='text'
+                    name='woodname'
+                    value={woodname}
+                    onChange={chwoodname}
+                    placeholder="eg: Oak, Birch, Mango"
+                    className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  />
+                </label>
+                <hr></hr>
+                <h1 className='text-white'>Private Travel</h1>
+                <h2 className='text-white'>Vehicle Number 1:</h2>
+                <label className='flex flex-col self-stretch'>
+                  <span className='text-white font-medium mb-4'>Vehicle Name and company</span>
+                  <p className='text-white text-xs py-3'>Mention the model name then company name. eg: Celerio, Maruti </p>
+                  <input
+                    type='text'
+                    name='priv'
+                    value={nameva}
+                    onChange={chnameva}
+                    placeholder=""
+                    className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  />
+                </label>
+                <label className='flex flex-col self-stretch'>
+                  <span className='text-white font-medium mb-4'>How old is Vehicle?</span>
+                  <select name="oldva" id="oldva" value={oldva} onChange={choldva} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">15+</option>
+                  </select>
+
+                </label>
+                <label className='flex flex-col self-stretch'>
+                  <span className='text-white font-medium mb-4'>Fuel?</span>
+                  <select name="meal" id="meal" value={fuelva} onChange={chfuelva} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
+                    <option value="petrol">Petrol</option>
+                    <option value="diesel">Diesel</option>
+                  </select>
+                </label>
+                <label className='flex flex-col self-stretch'>
+                  <span className='text-white font-medium mb-4'>Average mileage</span>
                   <input
                     type='number'
                     name='priv'
-                    value={priv}
-                    onChange={chpriv}
+                    value={milva}
+                    onChange={chmilva}
                     placeholder=""
                     min={0}
                     className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
@@ -256,17 +378,120 @@ const Calculator = () => {
 
                 </label>
                 <label className='flex flex-col self-stretch'>
-                  <span className='text-white font-medium mb-4'>🗑️Waste Generated(Kg) per week</span>
+                  <span className='text-white font-medium mb-4'>🚚Private vehicle usage in km</span>
+                  <input
+                    type='number'
+                    name='priv'
+                    value={distva}
+                    onChange={chdistva}
+                    placeholder=""
+                    min={0}
+                    className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  />
+
+                </label>
+                <h2 className='text-white'>Vehicle Number 2:</h2>
+                <label className='flex flex-col self-stretch'>
+                  <span className='text-white font-medium mb-4'>Vehicle Name and company</span>
+                  <p className='text-white text-xs py-3'>Mention the model name then company name. eg: Celerio, Maruti </p>
+                  <input
+                    type='text'
+                    name='priv'
+                    value={namevb}
+                    onChange={chnamevb}
+                    placeholder=""
+                    className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  />
+                </label>
+                <label className='flex flex-col self-stretch'>
+                  <span className='text-white font-medium mb-4'>How old is Vehicle?</span>
+                  <select name="oldva" id="oldva" value={oldvb} onChange={choldvb} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">15+</option>
+                  </select>
+
+                </label>
+                <label className='flex flex-col self-stretch'>
+                  <span className='text-white font-medium mb-4'>Fuel?</span>
+                  <select name="meal" id="meal" value={fuelvb} onChange={chfuelvb} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
+                    <option value="petrol">Petrol</option>
+                    <option value="diesel">Diesel</option>
+                  </select>
+                </label>
+                <label className='flex flex-col self-stretch'>
+                  <span className='text-white font-medium mb-4'>Average mileage</span>
+                  <input
+                    type='number'
+                    name='priv'
+                    value={milvb}
+                    onChange={chmilvb}
+                    placeholder=""
+                    min={0}
+                    className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  />
+
+                </label>
+                <label className='flex flex-col self-stretch'>
+                  <span className='text-white font-medium mb-4'>🚚Private vehicle usage in km</span>
+                  <input
+                    type='number'
+                    name='priv'
+                    value={distvb}
+                    onChange={chdistvb}
+                    placeholder=""
+                    min={0}
+                    className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  />
+
+                </label>
+                <hr></hr>
+                <label className='flex flex-col self-stretch'>
+                  <span className='text-white font-medium mb-4'>Do you seperate solid and liquid waste?</span>
+                  <select name="renewable" id="renewable" value={wastetype} onChange={chwastet} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                  </select>
+                </label>
+                <label className='flex flex-col self-stretch'>
+                  <span className='text-white font-medium mb-4'>🗑️ Solid Waste Generated(Kg) per week</span>
                   <input
                     type='number'
                     name='waste'
-                    value={waste}
-                    onChange={chwaste}
+                    value={wastes}
+                    onChange={chwastes}
                     placeholder=""
                     min={0}
                     className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                   />
                 </label>
+                <label className='flex flex-col self-stretch'>
+                  <span className='text-white font-medium mb-4'>🗑️Wet Waste Generated(Kg) per week</span>
+                  <input
+                    type='number'
+                    name='waste'
+                    value={wastew}
+                    onChange={chwastew}
+                    placeholder=""
+                    min={0}
+                    className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                  />
+                </label>
+                <hr></hr>
                 <label className='flex flex-col self-stretch'>
                   <span className='text-white font-medium mb-4'>🍽️Meal preference</span>
                   <select name="meal" id="meal" value={mealtype} onChange={chmtype} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
@@ -286,15 +511,18 @@ const Calculator = () => {
                     className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                   />
                 </label>
+                <hr></hr>
                 <label className='flex flex-col self-stretch'>
                   <span className='text-white font-medium mb-4'>♻️Any type of renewable energy generated</span>
                   <select name="renewable" id="renewable" value={renewtype} onChange={chrent} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
                     <option value="no">No</option>
-                    <option value="yes">Yes</option>
+                    <option value="yes">Solar power</option>
+                    <option value="yes">Biogas plant</option>
                   </select>
                 </label>
                 <label className='flex flex-col self-stretch'>
                   <span className='text-white font-medium mb-4'>Number of Units produced per month</span>
+                  <p className='text-white text-xs py-3'>Mentioned in bills provided by power companies</p>
                   <input
                     type='number'
                     name='renewunit'
