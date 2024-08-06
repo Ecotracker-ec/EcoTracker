@@ -143,6 +143,7 @@ const Calculator = () => {
     e.preventDefault();
     try {
       // Send POST request to the backend
+      const wastetot=wastes+wastew;
       console.log(token);
       const resp = await axios.post('https://ecotracker-t8em.onrender.com/calc/', {
         month: month,
@@ -164,7 +165,7 @@ const Calculator = () => {
         priv_mileage_b:milvb,
         priv_dist_b:distvb,
         wastetype: wastetype,
-        waste: wastes + wastew, //waste quantity
+        waste: wastetot, //waste quantity
         meal: mealtype,
         meals: meals,
         renewable: renewtype,
