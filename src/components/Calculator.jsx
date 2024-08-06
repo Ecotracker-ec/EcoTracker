@@ -163,6 +163,7 @@ const Calculator = () => {
         priv_fuel_b:fuelvb,
         priv_mileage_b:milvb,
         priv_dist_b:distvb,
+        wastetype: wastetype,
         waste: wastes + wastew, //waste quantity
         meal: mealtype,
         meals: meals,
