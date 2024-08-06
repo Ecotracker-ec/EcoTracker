@@ -138,6 +138,8 @@ const Calculator = () => {
     }
     return p;
   }
+  const tot=wastes+wastew;
+  console.log(tot);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -163,7 +165,7 @@ const Calculator = () => {
         priv_mileage_b:milvb,
         priv_dist_b:distvb,
         wastetype: wastetype,
-        waste: wastes, //waste quantity
+        waste: tot, //waste quantity
         meal: mealtype,
         meals: meals,
         renewable: renewtype,
