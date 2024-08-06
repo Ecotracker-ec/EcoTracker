@@ -94,13 +94,13 @@ const Calculator = () => {
     setOldvb(e.target.value)
   }
   const chdistvb = (e) => {
-    setDistva(e.target.value)
+    setDistvb(e.target.value)
   }
   const chmilvb = (e) => {
     setMilvb(e.target.value)
   }
   const chfuelvb = (e) => {
-    setFuelva(e.target.value)
+    setFuelvb(e.target.value)
   }
   const chwastes = (e) => {
     setWastes(e.target.value)
