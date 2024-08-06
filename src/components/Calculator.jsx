@@ -138,12 +138,12 @@ const Calculator = () => {
     }
     return p;
   }
-
+const wastetot=wastes+wastew;
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const wastetot=wastes+wastew;
     try {
       // Send POST request to the backend
-      const wastetot=wastes+wastew;
       console.log(token);
       const resp = await axios.post('https://ecotracker-t8em.onrender.com/calc/', {
         month: month,
