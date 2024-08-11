@@ -373,6 +373,7 @@ const Calculator = () => {
                     name='priv'
                     value={milva}
                     onChange={chmilva}
+                    disabled={nameva === "N/A"}
                     placeholder=""
                     min={1}
                     className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
@@ -443,6 +444,7 @@ const Calculator = () => {
                     name='priv'
                     value={milvb}
                     onChange={chmilvb}
+                    disabled={namevb === "N/A"}
                     placeholder=""
                     min={1}
                     className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
@@ -456,7 +458,7 @@ const Calculator = () => {
                     name='priv'
                     value={distvb}
                     onChange={chdistvb}
-                    disabled={nameva === "N/A"}
+                    disabled={namevb === "N/A"}
                     placeholder=""
                     min={0}
                     className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
@@ -490,7 +492,7 @@ const Calculator = () => {
                     name='waste'
                     value={wastew}
                     onChange={chwastew}
-                    disabled={wastetype === "no"}
+                    disabled={wastetype === "No"}
                     placeholder=""
                     min={0}
                     className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
@@ -533,7 +535,7 @@ const Calculator = () => {
                     name='renewunit'
                     value={renewunits}
                     onChange={chrenew}
-                    disabled={renewtype === "no"}
+                    disabled={renewtype === "No"}
                     placeholder=""
                     min={0}
                     className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
