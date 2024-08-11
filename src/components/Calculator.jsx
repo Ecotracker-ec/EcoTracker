@@ -24,12 +24,12 @@ const Calculator = () => {
   const [distva, setDistva] = useState("0");
   const [nameva, setNameva] = useState("N/A");
   const [oldva, setOldva] = useState("0");
-  const [milva, setMilva] = useState("0");
+  const [milva, setMilva] = useState("1");
   const [fuelva, setFuelva] = useState("petrol");
   const [distvb, setDistvb] = useState("0");
   const [namevb, setNamevb] = useState("N/A");
   const [oldvb, setOldvb] = useState("0");
-  const [milvb, setMilvb] = useState("0");
+  const [milvb, setMilvb] = useState("1");
   const [fuelvb, setFuelvb] = useState("petrol");
   const [wastes, setWastes] = useState("0");
   const [wastew, setWastew] = useState("0");
@@ -338,7 +338,7 @@ const Calculator = () => {
                 </label>
                 <label className='flex flex-col self-stretch'>
                   <span className='text-white font-medium mb-4'>How old is Vehicle?</span>
-                  <select name="oldva" id="oldva" value={oldva} onChange={choldva} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
+                  <select name="oldva" id="oldva" value={oldva} onChange={choldva} disabled={nameva === "N/A"} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -361,7 +361,7 @@ const Calculator = () => {
                 </label>
                 <label className='flex flex-col self-stretch'>
                   <span className='text-white font-medium mb-4'>Fuel?</span>
-                  <select name="meal" id="meal" value={fuelva} onChange={chfuelva} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
+                  <select name="meal" id="meal" value={fuelva} onChange={chfuelva} disabled={nameva === "N/A"} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
                     <option value="petrol">Petrol</option>
                     <option value="diesel">Diesel</option>
                   </select>
@@ -374,17 +374,18 @@ const Calculator = () => {
                     value={milva}
                     onChange={chmilva}
                     placeholder=""
-                    min={0}
+                    min={1}
                     className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                   />
 
                 </label>
                 <label className='flex flex-col self-stretch'>
-                  <span className='text-white font-medium mb-4'>🚚Private vehicle usage in km</span>
+                  <span className='text-white font-medium mb-4'>Vehicle usage in km</span>
                   <input
                     type='number'
                     name='priv'
                     value={distva}
+                    disabled={nameva === "N/A"}
                     onChange={chdistva}
                     placeholder=""
                     min={0}
@@ -407,7 +408,7 @@ const Calculator = () => {
                 </label>
                 <label className='flex flex-col self-stretch'>
                   <span className='text-white font-medium mb-4'>How old is Vehicle?</span>
-                  <select name="oldva" id="oldva" value={oldvb} onChange={choldvb} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
+                  <select name="oldva" id="oldva" value={oldvb} onChange={choldvb} disabled={namevb === "N/A"} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -430,7 +431,7 @@ const Calculator = () => {
                 </label>
                 <label className='flex flex-col self-stretch'>
                   <span className='text-white font-medium mb-4'>Fuel?</span>
-                  <select name="meal" id="meal" value={fuelvb} onChange={chfuelvb} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
+                  <select name="meal" id="meal" value={fuelvb} onChange={chfuelvb} disabled={namevb === "N/A"} className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'>
                     <option value="petrol">Petrol</option>
                     <option value="diesel">Diesel</option>
                   </select>
@@ -443,18 +444,19 @@ const Calculator = () => {
                     value={milvb}
                     onChange={chmilvb}
                     placeholder=""
-                    min={0}
+                    min={1}
                     className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                   />
 
                 </label>
                 <label className='flex flex-col self-stretch'>
-                  <span className='text-white font-medium mb-4'>🚚Private vehicle usage in km</span>
+                  <span className='text-white font-medium mb-4'>Vehicle usage in km</span>
                   <input
                     type='number'
                     name='priv'
                     value={distvb}
                     onChange={chdistvb}
+                    disabled={nameva === "N/A"}
                     placeholder=""
                     min={0}
                     className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
@@ -488,6 +490,7 @@ const Calculator = () => {
                     name='waste'
                     value={wastew}
                     onChange={chwastew}
+                    disabled={wastetype === "no"}
                     placeholder=""
                     min={0}
                     className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
@@ -530,6 +533,7 @@ const Calculator = () => {
                     name='renewunit'
                     value={renewunits}
                     onChange={chrenew}
+                    disabled={renewtype === "no"}
                     placeholder=""
                     min={0}
                     className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
