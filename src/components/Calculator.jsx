@@ -20,14 +20,14 @@ const Calculator = () => {
   const [gastype, setGtype] = useState("Gas Pipeline");
   const [gasusage, setGusage] = useState("0");
   const [wood, setWood] = useState("0");
-  const [woodname, setWoodname] = useState("");
+  const [woodname, setWoodname] = useState("N/A");
   const [distva, setDistva] = useState("0");
-  const [nameva, setNameva] = useState("");
+  const [nameva, setNameva] = useState("N/A");
   const [oldva, setOldva] = useState("0");
   const [milva, setMilva] = useState("0");
   const [fuelva, setFuelva] = useState("petrol");
   const [distvb, setDistvb] = useState("0");
-  const [namevb, setNamevb] = useState("");
+  const [namevb, setNamevb] = useState("N/A");
   const [oldvb, setOldvb] = useState("0");
   const [milvb, setMilvb] = useState("0");
   const [fuelvb, setFuelvb] = useState("petrol");
