@@ -114,7 +114,7 @@ const Dashboard = () => {
       </div>
       <div className="dashboard text-secondary text-[50px] font-bold" >Dashboard
         <div className="line">
-          <h1 className="text-[18px] md:text-[30px] font-bold text-secondary " >Emissions Line Chart</h1>
+          <h1 className="text-[18px] md:text-[30px] font-bold text-secondary " >Last 12 Emissions Line Chart</h1>
           <LineChartComponent emissionsData={totalemms} cityAvg={user?.cityAvg * 1000 / 12} />
         </div>
         <div className="pie">
